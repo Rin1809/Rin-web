@@ -3,9 +3,9 @@ import { useEffect, useRef } from 'react';
 const TechSwarm = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    // Config
-    const PARTICLE_COUNT = 80; // Enough for shapes
-    const CONNECTION_DISTANCE = 100;
+    // Config - Optimizing for performance (Lag fix)
+    const PARTICLE_COUNT = 50; // Reduced from 80 to save GPU
+    const CONNECTION_DISTANCE = 90; // Reduced range to fewer lines
     const SWARM_RADIUS = 200;
     const MOUSE_SPRING = 0.05;
 
@@ -195,20 +195,25 @@ const TechSwarm = () => {
                 ctx.fill();
                 ctx.globalAlpha = 1; // Reset
 
-                // Draw Connections
+                // Draw Connections - OPTIMIZED
+                // Batch lines? Hard with variable opacity.
+                // We use distSq to avoid expensive Math.sqrt per line
+                const maxDistSq = CONNECTION_DISTANCE * CONNECTION_DISTANCE;
+
                 for (let j = index + 1; j < particles.current.length; j++) {
                     const p2 = particles.current[j];
                     const distSq = (p.x - p2.x) ** 2 + (p.y - p2.y) ** 2;
 
-                    if (distSq < CONNECTION_DISTANCE ** 2) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        // Opacity based on distance AND dissolve factor
-                        // If one particle is dissolving, the line fades too
-                        const opacity = (1 - Math.sqrt(distSq) / CONNECTION_DISTANCE) * (1 - dissolveFactor);
+                    if (distSq < maxDistSq) {
+                        // Optimization: Use squared distance ratio instead of sqrt for opacity
+                        // Curve is slightly different but much faster
+                        const distRatio = distSq / maxDistSq;
+                        const opacity = (1 - distRatio) * (1 - dissolveFactor);
 
-                        if (opacity > 0) {
+                        if (opacity > 0.05) { // Skip barely visible lines
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
                             ctx.strokeStyle = `rgba(66, 133, 244, ${opacity * 0.4})`;
                             ctx.stroke();
                         }

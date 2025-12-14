@@ -1,0 +1,189 @@
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 24px 0;
+    /* Add top padding for header */
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 160px;
+}
+
+.leftColumn {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+    /* Changed from center to left */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.rightColumn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: flex-start;
+    /* Changed alignment */
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.brandName {
+    font-size: 16px;
+    color: #5f6368;
+    font-weight: 400;
+}
+
+.highlight {
+    font-weight: 500;
+    color: #202124;
+}
+
+.title {
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 500;
+    color: #202124;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+}
+
+.titleSub {
+    color: #5f6368;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    /* Changed alignment */
+    gap: 16px;
+}
+
+.primaryButton {
+    background-color: #202124;
+    color: #fff;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.primaryButton:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.secondaryButton {
+    background-color: #f1f3f4;
+    color: #202124;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.secondaryButton:hover {
+    background-color: #e8eaed;
+}
+
+.imageWrapper {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.heroImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .heroImage {
+    transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .leftColumn {
+        text-align: center;
+    }
+
+    .logoWrapper {
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .rightColumn {
+        width: 100%;
+    }
+}

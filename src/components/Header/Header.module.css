@@ -1,0 +1,104 @@
+.header {
+    width: 100%;
+    height: 56px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    /* Or blur/white if needed */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    backdrop-filter: blur(8px);
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logoIcon {
+    height: 32px;
+    width: auto;
+}
+
+.brandName {
+    font-size: 18px;
+    font-weight: 400;
+    /* Regular weight */
+    letter-spacing: -0.5px;
+    color: #5f6368;
+}
+
+.highlight {
+    font-weight: 500;
+    /* color: #4285F4; Use a neutral or brand color if needed, for now keeping the blue but renaming class */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navLink {
+    font-size: 14px;
+    color: #5f6368;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navLink:hover {
+    color: #202124;
+}
+
+.arrow {
+    font-size: 10px;
+    display: inline-block;
+    transform: translateY(1px);
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.downloadButton {
+    background-color: #202124;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.downloadButton:hover {
+    background-color: #000;
+    transform: scale(1.02);
+}

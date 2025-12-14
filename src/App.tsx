@@ -1,13 +1,11 @@
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
-import ParticleBackground from './components/Background/ParticleBackground';
-import CursorTrail from './components/Cursor/CursorTrail';
+import TechSwarm from './components/Background/TechSwarm';
 
 function App() {
   return (
     <div className="app">
-      <CursorTrail />
-      <ParticleBackground />
+      <TechSwarm />
       <Header />
       <Hero />
       {/* Components will go here */}

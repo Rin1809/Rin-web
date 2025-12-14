@@ -12,8 +12,8 @@ const Hero: React.FC = () => {
                     </div>
 
                     <h1 className={styles.title}>
-                        Rin for Lyn<br />
-                        <span className={styles.titleSub}>Cyber Security</span>
+                        ᓚᘏᗢ<br />
+                        <span className={styles.titleSub}>Rin or the Lynn</span>
                     </h1>
 
                     <div className={styles.actions}>
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
                 <div className={styles.rightColumn}>
                     {/* Placeholder illustration for now */}
                     <div className={styles.imageWrapper}>
-                        <img src="/20251023_202521.jpg" alt="Experience liftoff" className={styles.heroImage} />
+                        <img src="/November_18_2025_-_1_50PM.jpg" alt="Experience liftoff" className={styles.heroImage} />
                     </div>
                 </div>
             </div>

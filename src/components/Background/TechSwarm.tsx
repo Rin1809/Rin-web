@@ -131,8 +131,8 @@ const TechSwarm = () => {
             swarmCenter.current.y += dy * MOUSE_SPRING;
 
             // 2. Update and Draw Particles
-            ctx.strokeStyle = 'rgba(66, 133, 244, 0.15)'; // Tech Blue lines
-            ctx.fillStyle = '#4285F4'; // Tech Blue dots
+            ctx.strokeStyle = 'rgba(252, 203, 208, 0.2)'; // Pinkish pastel lines
+            ctx.fillStyle = '#EF5350'; // Pinkish pastel dots
             ctx.lineWidth = 1;
 
             particles.current.forEach((p, index) => {
@@ -214,7 +214,7 @@ const TechSwarm = () => {
                             ctx.beginPath();
                             ctx.moveTo(p.x, p.y);
                             ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(66, 133, 244, ${opacity * 0.4})`;
+                            ctx.strokeStyle = `rgba(252, 203, 208, ${opacity * 0.4})`;
                             ctx.stroke();
                         }
                     }

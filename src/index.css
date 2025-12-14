@@ -2,12 +2,14 @@
 
 :root {
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --color-text: #202124;
+  --color-text: hsl(300, 6%, 13%);
   --color-primary: #1a73e8;
   --color-bg: #ffffff;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;

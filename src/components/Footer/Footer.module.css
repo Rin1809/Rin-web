@@ -1,0 +1,112 @@
+.footer {
+    padding: 100px 40px 40px;
+    background-color: #fff;
+    color: #111;
+    overflow: hidden;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 120px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.cta {
+    font-size: 2.5rem;
+    font-weight: 500;
+    max-width: 400px;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+}
+
+.column h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #111;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column li {
+    margin-bottom: 12px;
+}
+
+.column a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.column a:hover {
+    color: #000;
+}
+
+.brandTitle {
+    font-size: 22vw;
+    line-height: 0.8;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.04em;
+    margin-bottom: 0px;
+    /* Pull it down slightly to cut off if needed or fit snug */
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* Special effect for specific characters */
+.specialChar {
+    display: inline-block;
+    transition: all 0.3s ease;
+    animation: bounceColor 3s infinite ease-in-out;
+}
+
+/* Add a slight delay for the second char to make them disjointed */
+.specialChar:last-of-type {
+    animation-delay: 1.5s;
+}
+
+@keyframes bounceColor {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        color: #111;
+        text-shadow: none;
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+        color: #5F6CE2;
+        /* A nice purple/blue accent */
+        text-shadow: 0 10px 30px rgba(95, 108, 226, 0.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .topSection {
+        flex-direction: column;
+    }
+
+    .links {
+        width: 100%;
+        gap: 40px;
+    }
+
+    .brandTitle {
+        font-size: 25vw;
+    }
+}

@@ -6,6 +6,7 @@ import FloatingIconsSection from './components/FloatingIconsSection/FloatingIcon
 import PjSection from './components/PjSection/PjSection';
 import GithubStatsSection from './components/GithubStatsSection/GithubStatsSection';
 import BlogSection from './components/BlogSection/BlogSection';
+import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
@@ -45,6 +46,7 @@ function App() {
       <PjSection />
       <GithubStatsSection />
       <BlogSection />
+      <Footer />
     </div>
   )
 }

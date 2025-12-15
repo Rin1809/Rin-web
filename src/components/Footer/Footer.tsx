@@ -32,7 +32,8 @@ const Footer = () => {
             </div>
 
             <div className={styles.brandTitle}>
-                Rin-L
+                <img src="/r3.png" alt="R" className={styles.brandImage} />
+                in-L
                 <span className={styles.specialChar}>y</span>
                 <span className={styles.specialChar}>n</span>
             </div>

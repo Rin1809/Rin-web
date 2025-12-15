@@ -19,10 +19,37 @@
     z-index: 2;
 }
 
+.splitLayout {
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+    gap: 60px;
+    margin-bottom: 100px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gifContainer {
+    flex-shrink: 0;
+    width: 450px;
+    /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+}
+
+.gif {
+    width: 100%;
+    height: 450px;
+    /* Fixed height to prevent layout shift on image swap */
+    object-fit: contain;
+}
+
 .titleWrapper {
     position: relative;
-    max-width: 900px;
-    margin-bottom: 100px;
+    flex: 1;
+    /* Take remaining space */
+    /* Remove max-width limitation here if parent constrains it */
 }
 
 .title {
@@ -154,10 +181,27 @@
         /* Less padding on mobile */
     }
 
+    .splitLayout {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    .gifContainer {
+        width: 200px;
+    }
+
+    .titleWrapper {
+        width: 100%;
+    }
+
     .title {
         font-size: 1.4rem;
         /* Smaller for mobile */
         padding: 0 20px;
+        text-align: center;
+        /* Center text on mobile if desired */
     }
 
     .iconsContainer {

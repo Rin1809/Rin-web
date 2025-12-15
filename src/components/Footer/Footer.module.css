@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 120px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     gap: 40px;
 }
@@ -65,6 +65,19 @@
     pointer-events: none;
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* helper to align image and text */
+}
+
+.brandImage {
+    height: 21vw;
+    /* Slightly smaller than font size to fit visual height */
+    width: auto;
+    object-fit: contain;
+    margin-right: 0vw;
+    /* Adjust spacing to connect with 'in' */
+    transform: translateY(1.5vw);
+    /* Fine tune vertical alignment */
 }
 
 /* Special effect for specific characters */

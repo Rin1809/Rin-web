@@ -33,9 +33,10 @@ const icons = [
 ];
 
 const FloatingIconsSection = () => {
-    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System | Software | AI | Developer |\n\nWhat I doing for? --> Money 🫰";
+    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System |\n\nWhat I doing for? --> Money 🫰";
     const [displayedText, setDisplayedText] = useState("");
     const [hasStarted, setHasStarted] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -77,27 +78,43 @@ const FloatingIconsSection = () => {
     return (
         <section className={styles.section} ref={sectionRef}>
             <div className={styles.contentWrapper}>
-                <div className={styles.titleWrapper}>
-                    {/* Ghost text to reserve space */}
-                    <h2 className={`${styles.title} ${styles.ghost}`}>
-                        {fullText.split('\n').map((line, index) => (
-                            <span key={index}>
-                                {line}
-                                <br />
-                            </span>
-                        ))}
-                    </h2>
+                <div className={styles.splitLayout}>
+                    {/* Left: GIF */}
+                    <div
+                        className={styles.gifContainer}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                    >
+                        <img
+                            src={isHovered ? "/kurumi2.png" : "/kurumi1.png"}
+                            alt="Kurumi"
+                            className={styles.gif}
+                        />
+                    </div>
 
-                    {/* Actual animated text overlay */}
-                    <h2 className={styles.title}>
-                        {displayedText.split('\n').map((line, index) => (
-                            <span key={index}>
-                                {line}
-                                {index < displayedText.split('\n').length - 1 && <br />}
-                            </span>
-                        ))}
-                        <span className={styles.cursor}></span>
-                    </h2>
+                    {/* Right: Text */}
+                    <div className={styles.titleWrapper}>
+                        {/* Ghost text to reserve space */}
+                        <h2 className={`${styles.title} ${styles.ghost}`}>
+                            {fullText.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
+                        </h2>
+
+                        {/* Actual animated text overlay */}
+                        <h2 className={styles.title}>
+                            {displayedText.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    {index < displayedText.split('\n').length - 1 && <br />}
+                                </span>
+                            ))}
+                            <span className={styles.cursor}></span>
+                        </h2>
+                    </div>
                 </div>
 
                 <div className={styles.iconsContainer}>

@@ -32,16 +32,40 @@
     flex-direction: column;
     justify-content: center;
     padding: 40px 0;
-    opacity: 0.3;
-    /* Default dimmed */
-    transition: opacity 0.5s ease;
+    opacity: 0.2;
+    /* Default dimmed/faded */
+    filter: blur(2px);
+    transition: all 0.6s ease;
 }
 
-.textBlock[data-index] {
-    /* We can style active state here using JS class or just rely on observer to set opacity if we passed state down, 
-       but for simplicity let's keep all opacity 1 or use observer logic in JS to add active class to text too if desired. 
-       For now, let's keep it simple: static opacity */
+.textBlock.active {
     opacity: 1;
+    filter: blur(0);
+}
+
+.textBlock.active .description {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: #202124;
+    transition: color 0.3s ease;
+}
+
+.description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #5f6368;
+
+    /* "Span down" effect: slide down from a bit higher or just reveal */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.6s ease 0.2s;
+    /* Delay slightly after title */
 }
 
 .title {
@@ -51,11 +75,7 @@
     color: #202124;
 }
 
-.description {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: #5f6368;
-}
+/* Old description block removed/merged above */
 
 .imageColumn {
     height: 100%;
@@ -91,7 +111,7 @@
     opacity: 1;
     z-index: 10;
     /* When becoming active: fade in immediately */
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .spacer {

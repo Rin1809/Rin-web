@@ -4,27 +4,27 @@ import { useEffect, useRef, useState } from 'react';
 const projects = [
     {
         id: 1,
-        title: "1",
-        description: "Rin Antigravity's Editor view offers tab autocompletion, natural language code commands, and a configurable, context-aware agent.",
-        image: "/project-ide.png"
+        title: "Meow Coder",
+        description: "Chuyên gia code dạo, bug đâu fix đó (tùy tâm trạng). Sở trường: React, Node.js và Pate.",
+        image: "/cat_coder.png"
     },
     {
         id: 2,
-        title: "2",
-        description: "Mobile Development environment with real-time preview and diverse device emulation capabilities.",
-        image: "/project_mobile_1765771713318.png"
+        title: "Server Guardian",
+        description: "Giám sát hệ thống 24/7 bằng phương pháp... ngủ trên server cho ấm. Đảm bảo uptime 99.9% (trừ giờ ăn).",
+        image: "/cat_server.png"
     },
     {
         id: 3,
-        title: "3",
-        description: "Data Science Research Platform featuring interactive node graphs and matrix-style visualizations.",
-        image: "/project_data_1765771729800.png"
+        title: "Data Analyst",
+        description: "Phân tích dữ liệu hạt khô và cá ngừ. Thống kê chính xác lượng thức ăn cần nạp vào mỗi ngày.",
+        image: "/cat_data.png"
     },
     {
         id: 4,
-        title: "4",
-        description: "Server Infrastructure Dashboard providing real-time metrics and network topology mapping.",
-        image: "/project_infra_1765771746758.png"
+        title: "Cable Manager",
+        description: "Quản lý dây cáp mạng bằng cách... cào và cắn. Đảm bảo hệ thống mạng luôn 'gọn gàng' theo cách riêng.",
+        image: "/cat_infra.png"
     }
 ];
 
@@ -43,8 +43,8 @@ const PjSection = () => {
                 });
             },
             {
-                rootMargin: '-40% 0px -40% 0px',
-                threshold: 0.2
+                rootMargin: '-20% 0px -20% 0px',
+                threshold: 0.1
             }
         );
 
@@ -63,7 +63,7 @@ const PjSection = () => {
                         <div
                             key={project.id}
                             ref={(el) => { sectionRefs.current[index] = el; }}
-                            className={styles.textBlock}
+                            className={`${styles.textBlock} ${index === activeIndex ? styles.active : ''}`}
                             data-index={index}
                         >
                             <h2 className={styles.title}>{project.title}</h2>

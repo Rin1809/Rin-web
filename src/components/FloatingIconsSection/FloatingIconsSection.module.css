@@ -1,0 +1,167 @@
+.section {
+    padding: 180px 0 120px;
+    /* Increased top padding to 180px for separation */
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* align-items: center; REMOVED center alignment */
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: 2.5rem;
+    /* Reduced from 3rem */
+    line-height: 1.2;
+    color: #202124;
+    max-width: 900px;
+    margin-bottom: 100px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-left: 0;
+    /* Enhance left alignment perception */
+}
+
+/* Blinking Cursor */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: #1a73e8;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Icons Wave Container */
+/* Icons Wave Container */
+.iconsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    /* Allow container to grow beyond 100% to spill over */
+    min-width: 100%;
+    padding: 0 40px;
+    margin-left: 50%;
+    /* Center the overflow */
+    transform: translateX(-50%);
+    position: relative;
+    padding-bottom: 20px;
+    gap: 60px;
+    /* Increased gap */
+    flex-wrap: nowrap;
+    /* Keep in a single line to maintain wave effect */
+}
+
+/* Wrapper handles the static wave offset */
+.iconWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* No animation here, just static transform */
+}
+
+/* Individual Icon Bubble */
+/* Individual Icon Bubble handles the floating animation */
+.iconBubble {
+    width: 100px;
+    /* Increased size */
+    height: 100px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    /* Softer border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    color: #5f6368;
+
+    /* Connect float animation */
+    animation: float 4s ease-in-out infinite;
+    /* Faster, smoother float */
+}
+
+.iconBubble:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    color: #1a73e8;
+    /* Active color */
+    border-color: #1a73e8;
+    z-index: 10;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+        /* Gentle float */
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding-top: 100px;
+        /* Less padding on mobile */
+    }
+
+    .title {
+        font-size: 1.8rem;
+        /* Smaller for mobile */
+        padding: 0 20px;
+    }
+
+    .iconsContainer {
+        overflow-x: auto;
+        padding: 20px;
+        justify-content: flex-start;
+        gap: 24px;
+        margin-left: 0;
+        transform: none;
+        min-width: unset;
+        flex-wrap: nowrap;
+        /* Force horizontal scroll on mobile */
+    }
+
+    /* Wrapper handles flex item behavior in the scrolling container */
+    .iconWrapper {
+        flex-shrink: 0;
+    }
+
+    .iconBubble {
+        width: 56px;
+        height: 56px;
+        /* flex-shrink: 0; Moved to wrapper */
+    }
+}

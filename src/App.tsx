@@ -2,6 +2,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import TechSwarm from './components/Background/TechSwarm';
 import VideoSection from './components/VideoSection/VideoSection';
+import FloatingIconsSection from './components/FloatingIconsSection/FloatingIconsSection';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
@@ -35,6 +36,7 @@ function App() {
       <Header />
       <Hero />
       <VideoSection />
+      <FloatingIconsSection />
       {/* Components will go here */}
     </div>
   )

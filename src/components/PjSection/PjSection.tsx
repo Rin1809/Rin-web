@@ -68,6 +68,11 @@ const PjSection = () => {
                         >
                             <h2 className={styles.title}>{project.title}</h2>
                             <p className={styles.description}>{project.description}</p>
+                            {index === projects.length - 1 && (
+                                <button className={styles.exploreButton}>
+                                    Explore Me
+                                </button>
+                            )}
                         </div>
                     ))}
                     {/* Spacer to allow last item to scroll fully away if needed, or just enough padding */}

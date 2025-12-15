@@ -1,0 +1,117 @@
+.section {
+    padding: 120px 0;
+    margin-top: 300px;
+    width: 100%;
+    position: relative;
+    /* Allow sticky to work */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: flex-start;
+    /* Start alignment for sticky behavior */
+}
+
+.textColumn {
+    display: flex;
+    flex-direction: column;
+    /* Gap handles spacing between sections */
+    gap: 0;
+}
+
+.textBlock {
+    min-height: 80vh;
+    /* Each section takes significant height for scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+    opacity: 0.3;
+    /* Default dimmed */
+    transition: opacity 0.5s ease;
+}
+
+.textBlock[data-index] {
+    /* We can style active state here using JS class or just rely on observer to set opacity if we passed state down, 
+       but for simplicity let's keep all opacity 1 or use observer logic in JS to add active class to text too if desired. 
+       For now, let's keep it simple: static opacity */
+    opacity: 1;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: #202124;
+}
+
+.description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #5f6368;
+}
+
+.imageColumn {
+    height: 100%;
+    /* Full height of parent */
+    position: relative;
+}
+
+.stickyWrapper {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 400px;
+    /* Fixed height for image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ideImage {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    z-index: 1;
+    /* When becoming inactive: wait 0.8s (keeping opacity 1) then snap to 0 */
+    transition: opacity 0s linear 0.8s;
+}
+
+.ideImage.active {
+    opacity: 1;
+    z-index: 10;
+    /* When becoming active: fade in immediately */
+    transition: opacity 0.8s ease-in-out;
+}
+
+.spacer {
+    height: 20vh;
+}
+
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .stickyWrapper {
+        position: relative;
+        top: 0;
+        transform: none;
+        margin-bottom: 40px;
+    }
+
+    .textBlock {
+        min-height: auto;
+        padding: 40px 0;
+    }
+}

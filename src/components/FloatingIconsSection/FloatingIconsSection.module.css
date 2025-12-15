@@ -1,11 +1,12 @@
 .section {
     padding: 180px 0 120px;
     /* Increased top padding to 180px for separation */
-    background-color: #ffffff;
+    /* background-color: #ffffff; Removed to show TechSwarm background */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
+    z-index: 20;
     /* align-items: center; REMOVED center alignment */
 }
 
@@ -18,18 +19,35 @@
     z-index: 2;
 }
 
-.title {
-    font-size: 2.5rem;
-    /* Reduced from 3rem */
-    line-height: 1.2;
-    color: #202124;
+.titleWrapper {
+    position: relative;
     max-width: 900px;
     margin-bottom: 100px;
+}
+
+.title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: #202124;
+    width: 100%;
+    /* Ensure overlay matches wrapper width */
     font-weight: 400;
     letter-spacing: -0.03em;
     text-align: left;
-    margin-left: 0;
-    /* Enhance left alignment perception */
+    margin: 0;
+
+    /* Absolute position for the animated one */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ghost {
+    position: relative;
+    /* Ghost dictates the height */
+    visibility: hidden;
+    /* Invisible but takes up space */
+    pointer-events: none;
 }
 
 /* Blinking Cursor */

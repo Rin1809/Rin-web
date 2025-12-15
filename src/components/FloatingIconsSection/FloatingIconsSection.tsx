@@ -14,6 +14,7 @@ import {
     Link2,
     MousePointer2
 } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 const icons = [
     { Icon: MousePointer2, delay: 0, offset: 0 },
@@ -32,14 +33,72 @@ const icons = [
 ];
 
 const FloatingIconsSection = () => {
+    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System | AI | Code |\n\nWhat I doing for? --> Money 🫰";
+    const [displayedText, setDisplayedText] = useState("");
+    const [hasStarted, setHasStarted] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting && !hasStarted) {
+                    setHasStarted(true);
+                }
+            },
+            { threshold: 0.3 } // Start when 30% visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [hasStarted]);
+
+    useEffect(() => {
+        if (!hasStarted) return;
+
+
+        const timer = setInterval(() => {
+            setDisplayedText((prev) => {
+                // Ensure we don't exceed fullText length
+                const nextIndex = prev.length + 1;
+                if (nextIndex <= fullText.length) {
+                    return fullText.slice(0, nextIndex);
+                }
+                clearInterval(timer);
+                return prev;
+            });
+        }, 50);
+
+        return () => clearInterval(timer);
+    }, [hasStarted]);
+
     return (
-        <section className={styles.section}>
+        <section className={styles.section} ref={sectionRef}>
             <div className={styles.contentWrapper}>
-                <h2 className={styles.title}>
-                    Rin Antigravity is our agentic<br />
-                    development platform, evolving the<br />
-                    IDE into the agent-first era.
-                </h2>
+                <div className={styles.titleWrapper}>
+                    {/* Ghost text to reserve space */}
+                    <h2 className={`${styles.title} ${styles.ghost}`}>
+                        {fullText.split('\n').map((line, index) => (
+                            <span key={index}>
+                                {line}
+                                <br />
+                            </span>
+                        ))}
+                    </h2>
+
+                    {/* Actual animated text overlay */}
+                    <h2 className={styles.title}>
+                        {displayedText.split('\n').map((line, index) => (
+                            <span key={index}>
+                                {line}
+                                {index < displayedText.split('\n').length - 1 && <br />}
+                            </span>
+                        ))}
+                        <span className={styles.cursor}></span>
+                    </h2>
+                </div>
 
                 <div className={styles.iconsContainer}>
                     {icons.map((item, index) => (

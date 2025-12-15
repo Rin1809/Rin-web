@@ -7,13 +7,13 @@ const VideoSection: React.FC = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
 
-                    <h2 className={styles.title}>|【りょ子】小夜子/Evening Child -acoustic ver.- を歌ってみた</h2>
+                    <h2 className={styles.title}>| 17さいのうた。 / 『ユイカ』</h2>
                 </div>
                 <div className={styles.videoWrapper}>
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/fuanpbPZFlk"
+                        src="https://www.youtube.com/embed/TLvMXOEXi_k"
                         title="Google Antigravity"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

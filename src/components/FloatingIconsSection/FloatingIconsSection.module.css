@@ -26,7 +26,7 @@
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     line-height: 1.2;
     color: #202124;
     width: 100%;
@@ -155,7 +155,7 @@
     }
 
     .title {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         /* Smaller for mobile */
         padding: 0 20px;
     }

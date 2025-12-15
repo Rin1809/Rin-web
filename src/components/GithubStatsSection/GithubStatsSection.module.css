@@ -1,0 +1,116 @@
+.section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 10;
+    color: #e2e8f0;
+    /* Light text for dark background */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    background: linear-gradient(to right, #000000, #bb9af7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: left;
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Left Column: Profile (Avatar Only) */
+.profileColumn {
+    flex: 0 0 300px;
+    /* Increased width for larger avatar presence */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align to top to match grid */
+    padding-top: 20px;
+}
+
+.avatarWrapper {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* Clean look, no heavy borders from previous design */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.avatarWrapper:hover {
+    transform: scale(1.05);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Right Column: Stats Grid (2x2) */
+.statsColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Enforce 2 columns */
+    gap: 20px;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* Match potential card internal radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fullWidthCard {
+    grid-column: span 2;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contentWrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .profileColumn {
+        flex: none;
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .avatarWrapper {
+        width: 180px;
+        height: 180px;
+    }
+
+    .cardGrid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+    }
+}

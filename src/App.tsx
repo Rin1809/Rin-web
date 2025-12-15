@@ -4,6 +4,7 @@ import TechSwarm from './components/Background/TechSwarm';
 import VideoSection from './components/VideoSection/VideoSection';
 import FloatingIconsSection from './components/FloatingIconsSection/FloatingIconsSection';
 import PjSection from './components/PjSection/PjSection';
+import GithubStatsSection from './components/GithubStatsSection/GithubStatsSection';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
@@ -39,7 +40,7 @@ function App() {
       <VideoSection />
       <FloatingIconsSection />
       <PjSection />
-      {/* Components will go here */}
+      <GithubStatsSection />
     </div>
   )
 }

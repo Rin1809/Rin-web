@@ -80,6 +80,15 @@
     /* Fine tune vertical alignment */
 }
 
+.brandImageL {
+    height: 21vw;
+    width: auto;
+    object-fit: contain;
+    margin: 0 1vw;
+    /* Added spacing to separate from '-' and 'y' */
+    transform: translateY(1.5vw);
+}
+
 /* Special effect for specific characters */
 .specialChar {
     display: inline-block;

@@ -33,7 +33,8 @@ const Footer = () => {
 
             <div className={styles.brandTitle}>
                 <img src="/r3.png" alt="R" className={styles.brandImage} />
-                in-L
+                in-
+                <img src="/L3.png" alt="L" className={styles.brandImageL} />
                 <span className={styles.specialChar}>y</span>
                 <span className={styles.specialChar}>n</span>
             </div>

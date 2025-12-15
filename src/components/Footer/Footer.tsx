@@ -2,7 +2,7 @@ import styles from './Footer.module.css';
 
 const Footer = () => {
     return (
-        <footer className={styles.footer}>
+        <footer id="footer" className={styles.footer}>
             <div className={styles.topSection}>
                 <div className={styles.cta}>
                     Hi, I'm Rin
@@ -14,7 +14,7 @@ const Footer = () => {
                         <ul>
                             <li><a href="#">Email</a></li>
                             <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">GitHub</a></li>
+                            <li><a href="https://github.com/Rin1809">GitHub</a></li>
                         </ul>
                     </div>
                     <div className={styles.column}>

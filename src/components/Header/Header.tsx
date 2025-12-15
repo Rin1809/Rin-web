@@ -16,7 +16,7 @@ const Header: React.FC = () => {
                     <nav className={styles.nav}>
                         <a href="#" className={styles.navLink}>Project</a>
                         <a href="#" className={styles.navLink}>Blog</a>
-                        <a href="#" className={styles.navLink}>Info</a>
+                        <a href="#footer" className={styles.navLink}>Info</a>
                     </nav>
                 </div>
 

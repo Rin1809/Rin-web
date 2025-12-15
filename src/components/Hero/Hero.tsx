@@ -27,7 +27,10 @@ const Hero: React.FC = () => {
                             Click me
                         </button>
 
-                        <button className={styles.secondaryButton}>
+                        <button
+                            className={styles.secondaryButton}
+                            onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             Contact me
                         </button>
                     </div>

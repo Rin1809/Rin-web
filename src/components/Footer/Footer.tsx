@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.topSection}>
                 <div className={styles.cta}>
-                    Experience liftoff
+                    Hi, I'm Rin
                 </div>
 
                 <div className={styles.links}>
@@ -18,7 +18,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className={styles.column}>
-                        <h3>Socials</h3>
+                        <h3>Social</h3>
                         <ul>
                             <li><a href="#">Discord</a></li>
                             <li><a href="#">Discord Server</a></li>

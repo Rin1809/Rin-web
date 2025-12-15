@@ -1,5 +1,5 @@
 .footer {
-    padding: 100px 40px 40px;
+    padding: 100px 40px 100px;
     background-color: #fff;
     color: #111;
     overflow: hidden;
@@ -59,7 +59,7 @@
     font-weight: 600;
     text-align: center;
     letter-spacing: -0.04em;
-    margin-bottom: 0px;
+    margin-bottom: -40px;
     /* Pull it down slightly to cut off if needed or fit snug */
     user-select: none;
     pointer-events: none;

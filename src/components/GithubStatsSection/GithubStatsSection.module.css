@@ -31,12 +31,33 @@
 /* Left Column: Profile (Avatar Only) */
 .profileColumn {
     flex: 0 0 300px;
-    /* Increased width for larger avatar presence */
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    /* Align to top to match grid */
+    flex-direction: column;
+    align-items: center;
     padding-top: 20px;
+    gap: 20px;
+}
+
+.githubButton {
+    background-color: #202124;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+    border: none;
+    backdrop-filter: none;
+}
+
+.githubButton:hover {
+    background-color: #000;
+    transform: scale(1.02);
+    box-shadow: none;
 }
 
 .avatarWrapper {
@@ -49,9 +70,7 @@
     transition: transform 0.3s ease;
 }
 
-.avatarWrapper:hover {
-    transform: scale(1.05);
-}
+
 
 .avatar {
     width: 100%;
@@ -77,17 +96,10 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
-    /* Match potential card internal radius */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .fullWidthCard {
     grid-column: span 2;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive */

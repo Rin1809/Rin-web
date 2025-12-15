@@ -33,7 +33,7 @@ const icons = [
 ];
 
 const FloatingIconsSection = () => {
-    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System | AI | Code |\n\nWhat I doing for? --> Money 🫰";
+    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System | Software | AI | Developer |\n\nWhat I doing for? --> Money 🫰";
     const [displayedText, setDisplayedText] = useState("");
     const [hasStarted, setHasStarted] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);

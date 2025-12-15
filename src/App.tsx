@@ -5,8 +5,11 @@ import VideoSection from './components/VideoSection/VideoSection';
 import FloatingIconsSection from './components/FloatingIconsSection/FloatingIconsSection';
 import PjSection from './components/PjSection/PjSection';
 import GithubStatsSection from './components/GithubStatsSection/GithubStatsSection';
+import BlogSection from './components/BlogSection/BlogSection';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+
+
 
 function App() {
   useEffect(() => {
@@ -41,6 +44,7 @@ function App() {
       <FloatingIconsSection />
       <PjSection />
       <GithubStatsSection />
+      <BlogSection />
     </div>
   )
 }

@@ -18,6 +18,14 @@ const GithubStatsSection = () => {
                                 className={styles.avatar}
                             />
                         </div>
+                        <a
+                            href={`https://github.com/${username}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.githubButton}
+                        >
+                            Visit Github
+                        </a>
                     </div>
 
                     {/* Right Column: 2x2 Stats Grid */}

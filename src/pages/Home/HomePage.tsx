@@ -4,8 +4,9 @@ import TechSwarm from '../../components/Background/TechSwarm';
 import VideoSection from '../../components/VideoSection/VideoSection';
 import FloatingIconsSection from '../../components/FloatingIconsSection/FloatingIconsSection';
 import PjSection from '../../components/PjSection/PjSection';
-import GithubStatsSection from '../../components/GithubStatsSection/GithubStatsSection';
 import BlogSection from '../../components/BlogSection/BlogSection';
+import SpotifySection from '../../components/SpotifySection/SpotifySection';
+import GithubStatsSection from '../../components/GithubStatsSection/GithubStatsSection';
 import Footer from '../../components/Footer/Footer';
 
 function HomePage() {
@@ -17,6 +18,7 @@ function HomePage() {
             <VideoSection />
             <FloatingIconsSection />
             <PjSection />
+            <SpotifySection />
             <BlogSection />
             <GithubStatsSection />
             <Footer />

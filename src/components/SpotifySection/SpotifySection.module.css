@@ -1,0 +1,149 @@
+.section {
+    padding: 80px 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0;
+    color: #000;
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.mascot {
+    position: absolute;
+    bottom: -1;
+    left: -110px;
+    /* Moved further left to clear text */
+    height: 59%;
+    /* Slightly larger for better presence */
+    width: auto;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* Ensure container allows overflow if we want it sticking out */
+/* Or if we want it inside the white box but to the left of content?
+   The user drew the box TO THE LEFT of the player.
+   If strictly inside the flex layout:
+*/
+
+/* Left Column */
+.embedContainer {
+    flex: 1;
+    min-width: 350px;
+}
+
+/* Right Column */
+.infoContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 30px;
+}
+
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.playlistTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.playlistDesc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #334155;
+    transition: all 0.2s ease;
+}
+
+.navButton:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: scale(1.05);
+}
+
+.counter {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 1200px) {
+    .mascot {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .contentWrapper {
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .embedContainer {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .infoContainer {
+        text-align: center;
+        align-items: center;
+    }
+}

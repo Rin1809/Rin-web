@@ -1,44 +1,11 @@
 import React, { useState } from 'react';
 import styles from './BlogSection.module.css';
+import { Link } from 'react-router-dom';
+import { blogs } from '../../data/blogs';
 
 const BlogSection: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2;
-
-    const blogs = [
-        {
-            id: 1,
-            title: "The Ultimate Guide to Kitten Naps",
-            date: "Dec 15, 2025",
-            category: "Lifestyle",
-            image: "/cat-blog-1.png",
-            link: "#"
-        },
-        {
-            id: 2,
-            title: "Street Style: Feline Fashion Trends",
-            date: "Dec 14, 2025",
-            category: "Fashion",
-            image: "/cat-blog-2.png",
-            link: "#"
-        },
-        {
-            id: 3,
-            title: "Why Cats Love Boxes More Than Beds",
-            date: "Dec 13, 2025",
-            category: "Psychology",
-            image: "/cat-blog-3.png",
-            link: "#"
-        },
-        {
-            id: 4,
-            title: "10 Purr-fect Toys for Active Cats",
-            date: "Dec 12, 2025",
-            category: "Review",
-            image: "/cat-blog-4.png",
-            link: "#"
-        }
-    ];
 
     const totalPages = Math.ceil(blogs.length / itemsPerPage);
     const indexOfLastBlog = currentPage * itemsPerPage;
@@ -62,7 +29,7 @@ const BlogSection: React.FC = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h2 className={styles.heading}>Latest Blogs</h2>
-                    <a href="#" className={styles.viewAllButton}>View blog</a>
+                    <Link to="/blog" className={styles.viewAllButton}>View blog</Link>
                 </div>
 
                 <div className={styles.contentSplit}>

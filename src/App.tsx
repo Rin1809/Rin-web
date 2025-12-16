@@ -1,16 +1,8 @@
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import TechSwarm from './components/Background/TechSwarm';
-import VideoSection from './components/VideoSection/VideoSection';
-import FloatingIconsSection from './components/FloatingIconsSection/FloatingIconsSection';
-import PjSection from './components/PjSection/PjSection';
-import GithubStatsSection from './components/GithubStatsSection/GithubStatsSection';
-import BlogSection from './components/BlogSection/BlogSection';
-import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
-
-
+import HomePage from './pages/Home/HomePage';
+import BlogPage from './pages/BlogPage/BlogPage';
 
 function App() {
   useEffect(() => {
@@ -37,17 +29,14 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <TechSwarm />
-      <Header />
-      <Hero />
-      <VideoSection />
-      <FloatingIconsSection />
-      <PjSection />
-      <GithubStatsSection />
-      <BlogSection />
-      <Footer />
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

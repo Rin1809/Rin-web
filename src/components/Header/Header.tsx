@@ -1,22 +1,30 @@
 import React from 'react';
 import styles from './Header.module.css';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
+    const location = useLocation();
+    const isHome = location.pathname === '/';
+
+    const getLink = (hash: string) => {
+        return isHome ? hash : `/${hash}`;
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.left}>
-                    <a href="/" className={styles.logo}>
+                    <Link to="/" className={styles.logo}>
                         <img src="/Image_202512142023-removebg-preview.png" alt="Rin - Lyn" className={styles.logoIcon} />
-                    </a>
+                    </Link>
                     <span className={styles.brandName}>
                         <span className={styles.highlight}>Rin</span> - Lyn
                     </span>
 
                     <nav className={styles.nav}>
-                        <a href="#" className={styles.navLink}>Project</a>
-                        <a href="#" className={styles.navLink}>Blog</a>
-                        <a href="#footer" className={styles.navLink}>Info</a>
+                        <a href={getLink('#project')} className={styles.navLink}>Project</a>
+                        <Link to="/blog" className={styles.navLink}>Blog</Link>
+                        <a href={getLink('#footer')} className={styles.navLink}>Info</a>
                     </nav>
                 </div>
 

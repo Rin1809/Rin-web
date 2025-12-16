@@ -41,7 +41,9 @@ const BlogSection: React.FC = () => {
                             {currentBlogs.map((blog) => (
                                 <div key={blog.id} className={styles.card}>
                                     <div className={styles.imageWrapper}>
-                                        <img src={blog.image} alt={blog.title} className={styles.image} />
+                                        <div className={styles.polaroidFrame}>
+                                            <img src={blog.image} alt={blog.title} className={styles.image} />
+                                        </div>
                                     </div>
                                     <div className={styles.content}>
                                         <h3 className={styles.title}>{blog.title}</h3>

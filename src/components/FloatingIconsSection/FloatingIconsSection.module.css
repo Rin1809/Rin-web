@@ -82,7 +82,7 @@
     display: inline-block;
     width: 3px;
     height: 1em;
-    background-color: #1a73e8;
+    background-color: #ff8f98;
     margin-left: 4px;
     vertical-align: middle;
     animation: blink 1s step-end infinite;
@@ -155,9 +155,9 @@
 .iconBubble:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    color: #1a73e8;
+    color: #ff8d96;
     /* Active color */
-    border-color: #1a73e8;
+    border-color: #ffffff;
     z-index: 10;
 }
 

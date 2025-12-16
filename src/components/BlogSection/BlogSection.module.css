@@ -111,16 +111,32 @@
 
 .imageWrapper {
     width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f1f5f9;
+    /* No overflow hidden, so we can see the rotated frame and shadow */
+    padding: 10px;
+    /* Space for rotation without clipping */
+}
+
+.polaroidFrame {
+    background-color: #fff;
+    padding: 10px 10px 30px 10px;
+    /* Bottom padding for polaroid look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: rotate(1deg);
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+/* Rotate every second card slightly differently */
+.card:nth-child(even) .polaroidFrame {
+    transform: rotate(-1deg);
 }
 
 .image {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1/1;
     object-fit: cover;
+    display: block;
+    filter: sepia(10%);
 }
 
 .content {

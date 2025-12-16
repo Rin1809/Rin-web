@@ -17,8 +17,8 @@ function HomePage() {
             <VideoSection />
             <FloatingIconsSection />
             <PjSection />
-            <GithubStatsSection />
             <BlogSection />
+            <GithubStatsSection />
             <Footer />
         </>
     )

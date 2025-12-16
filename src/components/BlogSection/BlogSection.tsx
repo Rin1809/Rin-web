@@ -12,6 +12,8 @@ const BlogSection: React.FC = () => {
     const indexOfFirstBlog = indexOfLastBlog - itemsPerPage;
     const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
+    const [isHovered, setIsHovered] = useState(false);
+
     const handleNext = () => {
         if (currentPage < totalPages) {
             setCurrentPage(prev => prev + 1);
@@ -73,14 +75,22 @@ const BlogSection: React.FC = () => {
 
                     {/* Right Column: Static Image */}
                     <div className={styles.rightColumn}>
-                        <div className={styles.imageDisplayWrapper}>
-                            <img src="/c2.png" alt="Featured" className={styles.featureImage} />
+                        <div
+                            className={styles.imageDisplayWrapper}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        >
+                            <img
+                                src={isHovered ? "/c3.png" : "/c2.png"}
+                                alt="Featured"
+                                className={styles.featureImage}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    );
+    )
 };
 
 export default BlogSection;

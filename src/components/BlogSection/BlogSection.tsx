@@ -81,9 +81,16 @@ const BlogSection: React.FC = () => {
                             onMouseLeave={() => setIsHovered(false)}
                         >
                             <img
-                                src={isHovered ? "/c3.png" : "/c2.png"}
-                                alt="Featured"
-                                className={styles.featureImage}
+                                src="/c2.png"
+                                alt="Featured Default"
+                                className={`${styles.featureImage} ${styles.defaultImage}`}
+                                style={{ opacity: isHovered ? 0 : 1 }}
+                            />
+                            <img
+                                src="/c3.png"
+                                alt="Featured Hover"
+                                className={`${styles.featureImage} ${styles.hoverImage}`}
+                                style={{ opacity: isHovered ? 1 : 0 }}
                             />
                         </div>
                     </div>

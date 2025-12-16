@@ -11,6 +11,7 @@ const BlogPage: React.FC = () => {
     }, []);
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [videoInteracting, setVideoInteracting] = useState(false);
     const itemsPerPage = 2;
 
     const totalPages = Math.ceil(blogs.length / itemsPerPage);
@@ -43,7 +44,11 @@ const BlogPage: React.FC = () => {
                         <h2 className={styles.videoTitle}>| 17さいのうた。 / 『ユイカ』</h2>
                     </div>
 
-                    <div className={styles.videoWrapper}>
+                    <div
+                        className={styles.videoWrapper}
+                        onMouseLeave={() => setVideoInteracting(false)}
+                        onClick={() => setVideoInteracting(true)}
+                    >
                         <iframe
                             width="100%"
                             height="100%"
@@ -52,6 +57,7 @@ const BlogPage: React.FC = () => {
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
+                            style={{ pointerEvents: videoInteracting ? 'auto' : 'none' }}
                         ></iframe>
                     </div>
                 </article>

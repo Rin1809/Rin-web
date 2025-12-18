@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import styles from './BlogPost.module.css';
 import { blogs } from '../../data/blogs';
 
@@ -62,7 +63,26 @@ const BlogPost: React.FC = () => {
             )}
 
             <div className={styles.content}>
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                    components={{
+                        a: ({ node, href, children, ...props }) => {
+                            const isVideo = href?.includes('user-attachments/assets') ||
+                                href?.match(/\.(mp4|webm|ogg)$/i);
+
+                            if (isVideo) {
+                                return (
+                                    <video controls style={{ maxWidth: '100%', borderRadius: '8px', margin: '24px 0', display: 'block' }}>
+                                        <source src={href} />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                );
+                            }
+                            return <a href={href} {...props}>{children}</a>;
+                        }
+                    }}
+                >
                     {content}
                 </ReactMarkdown>
             </div>

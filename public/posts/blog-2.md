@@ -1,11 +1,4 @@
-<h1>This repository, no coding. ᓚᘏᗢ </h1>
 
-I just want to show what i did and how to build a security business network. If care about it so expan it down
-
-<details>
-   
-
-<summary>Fortigate Firewall And Splunk Network Monitoring</summary>
 
 # Design And Deployment Small Business Network Support By Fortigate Firewall And Splunk Network Monitoring  
 

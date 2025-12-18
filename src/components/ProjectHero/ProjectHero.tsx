@@ -24,8 +24,9 @@ const ProjectHero: React.FC = () => {
         let animationFrameId: number;
 
         // --- Configuration ---
-        const particleCount = 800; // Increased count for better shape definition
-        const baseRadius = Math.min(width, height) * 0.25;
+        const particleCount = 1000;
+        // Increased base radius significantly to fill screen (0.25 -> 0.45)
+        const baseRadius = Math.min(width, height) * 0.45;
 
         // --- Shape Generation ---
 
@@ -34,10 +35,10 @@ const ProjectHero: React.FC = () => {
         for (let i = 0; i < particleCount; i++) {
             const t = i / particleCount;
             const theta = t * Math.PI * 10;
-            // Spread along X axis
-            const x = (t - 0.5) * width * 1.5;
-            const y = Math.sin(theta) * 100;
-            const z = Math.cos(theta) * 100;
+            // Spread along X axis - wider for full screen feel
+            const x = (t - 0.5) * width * 1.8;
+            const y = Math.sin(theta) * 150; // Taller wave
+            const z = Math.cos(theta) * 150;
             shape1.push({ x, y, z });
         }
 
@@ -47,9 +48,10 @@ const ProjectHero: React.FC = () => {
         for (let i = 0; i < particleCount; i++) {
             const theta = 2 * Math.PI * i / goldenRatio;
             const phi = Math.acos(1 - 2 * (i + 0.5) / particleCount);
-            const x = baseRadius * Math.sin(phi) * Math.cos(theta);
-            const y = baseRadius * Math.sin(phi) * Math.sin(theta);
-            const z = baseRadius * Math.cos(phi);
+            // Slightly scale up sphere
+            const x = baseRadius * 1.2 * Math.sin(phi) * Math.cos(theta);
+            const y = baseRadius * 1.2 * Math.sin(phi) * Math.sin(theta);
+            const z = baseRadius * 1.2 * Math.cos(phi);
             shape2.push({ x, y, z });
         }
 
@@ -58,8 +60,8 @@ const ProjectHero: React.FC = () => {
         for (let i = 0; i < particleCount; i++) {
             const u = Math.random() * Math.PI * 2;
             const v = Math.random() * Math.PI * 2;
-            const tubeRadius = baseRadius * 0.4;
-            const ringRadius = baseRadius;
+            const tubeRadius = baseRadius * 0.5; // Thicker tube
+            const ringRadius = baseRadius * 1.0;
 
             const x = (ringRadius + tubeRadius * Math.cos(v)) * Math.cos(u);
             const y = (ringRadius + tubeRadius * Math.cos(v)) * Math.sin(u);
@@ -73,48 +75,62 @@ const ProjectHero: React.FC = () => {
         // --- Animation Loop ---
 
         const render = (time: number) => {
-            // 1. Calculate Scroll Progress
-            // We want progress to go from 0 to 2 (since we have 3 shapes, 2 transitions)
-            // progress 0 = shape 1
-            // progress 1 = shape 2
-            // progress 2 = shape 3
-            let progress = 0;
+            // 1. Calculate Raw Scroll Progress (0 to 1) based on track height
+            let rawProgress = 0;
             if (track) {
                 const rect = track.getBoundingClientRect();
-                // How far we've scrolled into the track. 
-                // When rect.top is 0, we correspond to 0 progress.
-                // When rect.bottom is window.innerHeight, we are at the end.
                 const scrollableDistance = rect.height - window.innerHeight;
                 const scrolled = -rect.top;
 
                 if (scrollableDistance > 0) {
-                    progress = (scrolled / scrollableDistance) * 2;
+                    rawProgress = scrolled / scrollableDistance;
                 }
             }
 
-            // Clamp progress
-            progress = Math.max(0, Math.min(2, progress));
+            // Clamp
+            rawProgress = Math.max(0, Math.min(1, rawProgress));
 
-            // 2. Interpolate
-            // Determine which transition we are in
-            let targetShape: Point[];
-            let sourceShape: Point[];
-            let localT: number; // 0 to 1 for the current transition
+            // 2. Define Phases with HOLD times
+            // 0.0 - 0.2: Hold Shape 1
+            // 0.2 - 0.4: Morph 1 -> 2
+            // 0.4 - 0.7: Hold Shape 2
+            // 0.7 - 0.9: Morph 2 -> 3
+            // 0.9 - 1.0: Hold Shape 3
 
-            if (progress < 1) {
+            let sourceShape = shape1;
+            let targetShape = shape1;
+            let mixFactor = 0; // 0 = source, 1 = target
+
+            if (rawProgress < 0.2) {
+                // Phase 1: Hold Helix
+                sourceShape = shape1;
+                targetShape = shape1;
+                mixFactor = 0;
+            } else if (rawProgress < 0.4) {
+                // Phase 2: Morph Helix -> Sphere
                 sourceShape = shape1;
                 targetShape = shape2;
-                localT = progress; // 0 -> 1
-            } else {
+                mixFactor = (rawProgress - 0.2) / 0.2; // 0..1
+            } else if (rawProgress < 0.7) {
+                // Phase 3: Hold Sphere
+                sourceShape = shape2;
+                targetShape = shape2;
+                mixFactor = 0;
+            } else if (rawProgress < 0.9) {
+                // Phase 4: Morph Sphere -> Torus
                 sourceShape = shape2;
                 targetShape = shape3;
-                localT = progress - 1; // 0 -> 1
+                mixFactor = (rawProgress - 0.7) / 0.2; // 0..1
+            } else {
+                // Phase 5: Hold Torus
+                sourceShape = shape3;
+                targetShape = shape3;
+                mixFactor = 0;
             }
 
-            // Ease the transition for smoothness
-            // simple ease-in-out
-            const ease = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-            const easedT = ease(localT);
+            // Smoothstep ease
+            const ease = (t: number) => t * t * (3 - 2 * t);
+            const easedT = ease(mixFactor);
 
             // Update particles
             const rotationSpeed = time * 0.0002;
@@ -122,7 +138,6 @@ const ProjectHero: React.FC = () => {
             ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = '#6495ED'; // Cornflower Blue
 
-            // Center of screen
             const cx = width / 2;
             const cy = height / 2;
 
@@ -135,23 +150,21 @@ const ProjectHero: React.FC = () => {
                 let py = src.y + (dst.y - src.y) * easedT;
                 let pz = src.z + (dst.z - src.z) * easedT;
 
-                // Add some rotation to the whole object so it's not static
                 // Rotate around Y axis
                 const cosR = Math.cos(rotationSpeed);
                 const sinR = Math.sin(rotationSpeed);
 
-                // Simple X/Z rotation
                 const xRot = px * cosR - pz * sinR;
                 const zRot = pz * cosR + px * sinR;
                 px = xRot;
                 pz = zRot;
 
-                // Add some "noise" wave
+                // Add "noise" wave
                 py += Math.sin(time * 0.001 + px * 0.01) * 10;
 
                 // 3D Perspective Projection
                 const fov = 800;
-                const scale = fov / (fov + pz + 400); // 400 is camera distance offset
+                const scale = fov / (fov + pz + 400);
 
                 const x2d = cx + px * scale;
                 const y2d = cy + py * scale;

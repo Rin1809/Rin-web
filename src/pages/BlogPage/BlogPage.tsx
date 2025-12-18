@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './BlogPage.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -79,7 +80,7 @@ const BlogPage: React.FC = () => {
                                     <div className={styles.itemMeta}>
                                         <span className={styles.itemDate}>{blog.date}</span>
                                         <span className={styles.itemCategory}>{blog.category}</span>
-                                        <a href={blog.link} className={styles.readMore}>Read &gt;</a>
+                                        <Link to={`/blog/${blog.id}`} className={styles.readMore}>Read &gt;</Link>
                                     </div>
                                     <p className={styles.itemDescription}>{blog.description}</p>
                                 </div>

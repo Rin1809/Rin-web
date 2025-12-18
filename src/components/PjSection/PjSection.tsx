@@ -24,7 +24,7 @@ const projects = [
         id: 4,
         title: "Cable Manager",
         description: "Quản lý dây cáp mạng bằng cách... cào và cắn. Đảm bảo hệ thống mạng luôn 'gọn gàng' theo cách riêng.",
-        image: "/cat_infra.png"
+        image: "/cat_coderr.png"
     }
 ];
 

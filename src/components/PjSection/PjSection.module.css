@@ -88,8 +88,10 @@
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
-    height: 400px;
-    /* Fixed height for image container */
+    /* Enforce 1:1 Aspect Ratio (Square) */
+    aspect-ratio: 1/1;
+    /* Ensure it doesn't overflow viewport height too much if width is huge */
+    max-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,9 +100,10 @@
 .ideImage {
     position: absolute;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
     opacity: 0;
     z-index: 1;
     /* When becoming inactive: wait 0.8s (keeping opacity 1) then snap to 0 */

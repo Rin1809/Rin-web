@@ -51,7 +51,7 @@ const BlogSection: React.FC = () => {
                                             <span className={styles.date}>{blog.date}</span>
                                             <span className={styles.category}>{blog.category}</span>
                                         </div>
-                                        <a href={blog.link} className={styles.link}>Read blog &gt;</a>
+                                        <Link to={`/blog/${blog.id}`} className={styles.link}>Read blog &gt;</Link>
                                     </div>
                                 </div>
                             ))}

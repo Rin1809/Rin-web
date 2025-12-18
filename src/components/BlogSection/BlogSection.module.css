@@ -84,14 +84,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Maintain aspect ratio of the images roughly, or let content define it if not absolute */
-    /* Since we're going absolute for transition, we need to ensure height.
-       OR we can keep one relative and one absolute.
-       Let's allow the default image to dictate height and only absolute the hover one?
-       Actually, if we want smooth crossfade without layout shift, absolute on top is best.
-       But we need height. Let's make the default image display normally (relative) 
-       and the hover image absolute on top.
-    */
 }
 
 .featureImage {

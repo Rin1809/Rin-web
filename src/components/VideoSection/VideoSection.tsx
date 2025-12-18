@@ -19,7 +19,7 @@ const VideoSection: React.FC = () => {
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/TLvMXOEXi_k"
+                        src="https://www.youtube-nocookie.com/embed/TLvMXOEXi_k"
                         title="Google Antigravity"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProjectPage.module.css';
+import ProjectHero from '../../components/ProjectHero/ProjectHero';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { projects } from '../../data/projects';
@@ -12,7 +13,6 @@ const ProjectPage: React.FC = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const [videoInteracting, setVideoInteracting] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 3;
 
@@ -43,28 +43,7 @@ const ProjectPage: React.FC = () => {
                     <h1 className={styles.pageTitle}>Projects</h1>
                 </header>
 
-                <article className={styles.featuredArticle}>
-                    <div className={styles.videoHeader}>
-                        <h2 className={styles.videoTitle}>| Featured Project Demo</h2>
-                    </div>
-
-                    <div
-                        className={styles.videoWrapper}
-                        onMouseLeave={() => setVideoInteracting(false)}
-                        onClick={() => setVideoInteracting(true)}
-                    >
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src="https://www.youtube-nocookie.com/embed/TLvMXOEXi_k"
-                            title="Project Demo"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            style={{ pointerEvents: videoInteracting ? 'auto' : 'none' }}
-                        ></iframe>
-                    </div>
-                </article>
+                <ProjectHero />
             </div>
 
             <WhatIsThis />

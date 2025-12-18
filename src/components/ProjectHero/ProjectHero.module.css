@@ -1,0 +1,126 @@
+/* The outer scroll track that gives us "height" to scroll through */
+.scrollTrack {
+    width: 100%;
+    height: 300vh;
+    /* Scroll distance for 3 shapes */
+    position: relative;
+    background-color: #ffffff;
+}
+
+/* The actual hero section that stays pinned */
+.heroStickyContainer {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.contentWrapper {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.actionButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.actionButton:hover {
+    transform: translateY(-2px);
+    background-color: #000000;
+}
+
+.chipsContainer {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chip {
+    padding: 0.5rem 1.25rem;
+    background-color: #f5f5f7;
+    border: 1px solid #e5e5e5;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.chipActive {
+    background-color: #fff;
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.chipIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        padding: 0 1rem;
+    }
+
+    /* On mobile, we might want less scroll distance if it feels too long */
+    .scrollTrack {
+        height: 250vh;
+    }
+}

@@ -200,7 +200,7 @@
 
 /* Polaroid Style */
 .polaroidFrame {
-    background-color: #fff;
+    background-color: #fbffeb;
     padding: 12px 12px 40px 12px;
     /* Bottom padding for caption */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);

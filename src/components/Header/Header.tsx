@@ -22,7 +22,7 @@ const Header: React.FC = () => {
                     </span>
 
                     <nav className={styles.nav}>
-                        <a href={getLink('#project')} className={styles.navLink}>Project</a>
+                        <Link to="/project" className={styles.navLink}>Project</Link>
                         <Link to="/blog" className={styles.navLink}>Blog</Link>
                         <a href={getLink('#footer')} className={styles.navLink}>Info</a>
                     </nav>

@@ -6,7 +6,7 @@
 
 ![image](https://github.com/user-attachments/assets/92f747da-345a-492a-ada0-9e0729d31700)
 
-(Foritgate Firewall Dashboard)
+> (Foritgate Firewall Dashboard)
 
 **2. Design and Implement a Computer Network for a Small Business.** This network needs to meet the following requirements:
 
@@ -18,11 +18,11 @@
 
 **Tasks:**
 
-1.  Draw a network diagram clearly showing all components, connections, and IP addresses. *(Completed - see diagram below)*
-2.  Detail the firewall configuration, including security policies, IDS/IPS, and VPN. *(Detailed in Section II.2)*
-3.  Explain the Active Directory configuration, including DHCP, DNS, and FTP. *(Detailed in Section III)*
-4.  Describe how administrators can securely connect to the LAN remotely, summarized in steps including SSH and Remote Desktop. *(Detailed in Section II.3 & III.1.3)*
-5.  Configure network security monitoring for the LAN and DMZ. *(Detailed in Section III.3)*
+> 1.  Draw a network diagram clearly showing all components, connections, and IP addresses. *(Completed - see diagram below)*
+> 2.  Detail the firewall configuration, including security policies, IDS/IPS, and VPN. *(Detailed in Section II.2)*
+> 3.  Explain the Active Directory configuration, including DHCP, DNS, and FTP. *(Detailed in Section III)*
+> 4.  Describe how administrators can securely connect to the LAN remotely, summarized in steps including SSH and Remote Desktop. *(Detailed in Section II.3 & III.1.3)*
+> 5.  Configure network security monitoring for the LAN and DMZ. *(Detailed in Section III.3)*
 
 **2. Network Diagram**
 
@@ -73,9 +73,9 @@ This section details the configuration steps performed on the FortiGate firewall
 
 This section summarizes the basic interface configuration of the FortiGate firewall, setting up the physical ports and assigning IP addresses for each network zone.
 
-*   Port 1 = WAN
-*   Port 2 = LAN
-*   Port 3 = DMZ
+> *   Port 1 = WAN
+> *   Port 2 = LAN
+> *   Port 3 = DMZ
 
 | Port  | Mode   | IPv4 Address      |
 | ----- | ------ | ----------------- |

@@ -109,7 +109,7 @@
 }
 
 .polaroidFrame {
-    background-color: #fff;
+    background-color: #f4f4e3;
     padding: 10px 10px 30px 10px;
     /* Bottom padding for polaroid look */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

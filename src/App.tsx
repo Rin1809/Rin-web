@@ -4,6 +4,7 @@ import Lenis from 'lenis';
 import HomePage from './pages/Home/HomePage';
 import BlogPage from './pages/BlogPage/BlogPage';
 import BlogPost from './pages/BlogPost/BlogPost';
+import ProjectPage from './pages/ProjectPage/ProjectPage';
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/project" element={<ProjectPage />} />
         </Routes>
       </div>
     </Router>

@@ -13,6 +13,7 @@ const BlogPost: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [content, setContent] = useState('');
     const [loading, setLoading] = useState(true);
+    const [videoInteracting, setVideoInteracting] = useState(false);
 
     const blog = blogs.find(b => b.id === Number(id));
 
@@ -62,7 +63,24 @@ const BlogPost: React.FC = () => {
                     </div>
                 </header>
 
-                {blog.image && (
+                {(blog as any).videoUrl ? (
+                    <div
+                        className={styles.videoWrapper}
+                        onMouseLeave={() => setVideoInteracting(false)}
+                        onClick={() => setVideoInteracting(true)}
+                    >
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src={(blog as any).videoUrl}
+                            title={blog.title}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ pointerEvents: videoInteracting ? 'auto' : 'none' }}
+                        ></iframe>
+                    </div>
+                ) : blog.image && (
                     <img src={blog.image} alt={blog.imageCaption} className={styles.featuredImage} />
                 )}
 

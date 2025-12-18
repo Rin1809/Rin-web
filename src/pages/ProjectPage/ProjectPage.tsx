@@ -3,6 +3,7 @@ import styles from './ProjectPage.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { projects } from '../../data/projects';
+import WhatIsThis from '../../components/WhatIsThis/WhatIsThis';
 
 const ProjectPage: React.FC = () => {
     // Scroll to top on mount
@@ -11,6 +12,27 @@ const ProjectPage: React.FC = () => {
     }, []);
 
     const [videoInteracting, setVideoInteracting] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 3;
+
+    const totalPages = Math.ceil(projects.length / itemsPerPage);
+    const indexOfLastProject = currentPage * itemsPerPage;
+    const indexOfFirstProject = indexOfLastProject - itemsPerPage;
+    const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+
+    const handleNext = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(prev => prev + 1);
+            window.scrollTo({ top: 500, behavior: 'smooth' }); // Scroll back to list top
+        }
+    };
+
+    const handlePrev = () => {
+        if (currentPage > 1) {
+            setCurrentPage(prev => prev - 1);
+            window.scrollTo({ top: 500, behavior: 'smooth' });
+        }
+    };
 
     return (
         <div className={styles.page}>
@@ -42,6 +64,11 @@ const ProjectPage: React.FC = () => {
                         ></iframe>
                     </div>
                 </article>
+            </div>
+
+            <WhatIsThis />
+
+            <div className={styles.container}>
 
                 {/* Latest Projects Section Header (with Tabs) */}
                 <div className={styles.projectsSection}>
@@ -54,7 +81,7 @@ const ProjectPage: React.FC = () => {
 
                 {/* Project List */}
                 <div className={styles.projectList}>
-                    {projects.map((project) => (
+                    {currentProjects.map((project) => (
                         <div key={project.id} className={styles.projectItem}>
                             <div className={styles.projectImageWrapper}>
                                 <img
@@ -100,6 +127,25 @@ const ProjectPage: React.FC = () => {
                         </div>
                     ))}
                 </div>
+
+                {totalPages > 1 && (
+                    <div className={styles.paginationFooter}>
+                        <button
+                            className={styles.paginationButton}
+                            onClick={handlePrev}
+                            disabled={currentPage === 1}
+                        >
+                            &lt;
+                        </button>
+                        <button
+                            className={styles.paginationButton}
+                            onClick={handleNext}
+                            disabled={currentPage === totalPages}
+                        >
+                            &gt;
+                        </button>
+                    </div>
+                )}
             </div>
             <Footer />
         </div>

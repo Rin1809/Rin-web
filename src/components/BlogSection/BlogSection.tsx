@@ -83,7 +83,7 @@ const BlogSection: React.FC = () => {
                             onMouseLeave={() => setIsHovered(false)}
                         >
                             <img
-                                src={isHovered ? "/c3.png" : "/c2.png"}
+                                src={isHovered ? "/c12.png" : "/c11.png"}
                                 alt="Featured Blog Image"
                                 className={styles.featureImage}
                             />

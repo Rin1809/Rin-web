@@ -4,6 +4,7 @@ import styles from './BlogPage.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { blogs } from '../../data/blogs';
+import WhatIsThis from '../../components/WhatIsThis/WhatIsThis';
 
 const BlogPage: React.FC = () => {
     // Scroll to top on mount
@@ -62,6 +63,11 @@ const BlogPage: React.FC = () => {
                         ></iframe>
                     </div>
                 </article>
+            </div>
+
+            <WhatIsThis />
+
+            <div className={styles.container}>
 
                 {/* Latest Blogs Section */}
                 <div className={styles.latestSection}>

@@ -14,7 +14,7 @@ export const projects: Project[] = [
         title: "Tên Project 1",
         description: "A comprehensive guide to designing a secure small business network using FortiGate Firewall and Splunk.",
         image: "/container.png",
-        downloadUrl: "#", // Replace with actual zip path e.g. /projects/project1.zip
+        downloadUrl: "#",
         githubUrl: "https://github.com/Rin1809",
         docsUrl: "#"
     },
@@ -30,6 +30,15 @@ export const projects: Project[] = [
     {
         id: 3,
         title: "Tên Project 3",
+        description: "A comprehensive guide to designing a secure small business network using FortiGate Firewall and Splunk.",
+        image: "/container.png",
+        downloadUrl: "#",
+        githubUrl: "https://github.com/Rin1809",
+        docsUrl: "#"
+    },
+    {
+        id: 4,
+        title: "Tên Project 4",
         description: "A comprehensive guide to designing a secure small business network using FortiGate Firewall and Splunk.",
         image: "/container.png",
         downloadUrl: "#",

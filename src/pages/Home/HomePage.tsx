@@ -6,7 +6,7 @@ import FloatingIconsSection from '../../components/FloatingIconsSection/Floating
 import PjSection from '../../components/PjSection/PjSection';
 import BlogSection from '../../components/BlogSection/BlogSection';
 import SpotifySection from '../../components/SpotifySection/SpotifySection';
-import GithubStatsSection from '../../components/GithubStatsSection/GithubStatsSection';
+
 import Footer from '../../components/Footer/Footer';
 
 function HomePage() {
@@ -20,7 +20,7 @@ function HomePage() {
             <PjSection />
             <SpotifySection />
             <BlogSection />
-            <GithubStatsSection />
+
             <Footer />
         </>
     )

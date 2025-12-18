@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { projects } from '../../data/projects';
 import WhatIsThis from '../../components/WhatIsThis/WhatIsThis';
+import GithubStatsSection from '../../components/GithubStatsSection/GithubStatsSection';
 
 const ProjectPage: React.FC = () => {
     // Scroll to top on mount
@@ -147,6 +148,9 @@ const ProjectPage: React.FC = () => {
                     </div>
                 )}
             </div>
+
+            <GithubStatsSection />
+
             <Footer />
         </div>
     );

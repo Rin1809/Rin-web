@@ -1,7 +1,19 @@
 import React from 'react';
 import styles from './WhatIsThis.module.css';
 
-const WhatIsThis: React.FC = () => {
+interface WhatIsThisProps {
+    defaultImage?: string;
+    hoverImage?: string;
+    highlight?: string;
+    description?: string;
+}
+
+const WhatIsThis: React.FC<WhatIsThisProps> = ({
+    defaultImage = "/c17.png",
+    hoverImage = "/c16.png",
+    highlight = "FortiGate Firewall & Splunk Network Security Deployment",
+    description = "This repository documents the end-to-end deployment of a secure network infrastructure for a small business environment. It focuses on configuration and architecture rather than coding. Key features include"
+}) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
     return (
@@ -10,8 +22,8 @@ const WhatIsThis: React.FC = () => {
             <div className={styles.contentWrapper}>
                 <div className={styles.textContent}>
                     <div className={styles.description}>
-                        <span className={styles.highlight}>FortiGate Firewall & Splunk Network Security Deployment</span>
-                        This repository documents the end-to-end deployment of a secure network infrastructure for a small business environment. It focuses on configuration and architecture rather than coding. Key features include
+                        <span className={styles.highlight}>{highlight}</span>
+                        {description}
                     </div>
                 </div>
                 <div
@@ -20,7 +32,7 @@ const WhatIsThis: React.FC = () => {
                     onMouseLeave={() => setIsHovered(false)}
                 >
                     <img
-                        src={isHovered ? "/c16.png" : "/c17.png"}
+                        src={isHovered ? hoverImage : defaultImage}
                         alt="What is this illustration"
                         className={styles.image}
                     />

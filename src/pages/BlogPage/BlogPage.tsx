@@ -65,7 +65,12 @@ const BlogPage: React.FC = () => {
                 </article>
             </div>
 
-            <WhatIsThis />
+            <WhatIsThis
+                defaultImage="/c18.png"
+                hoverImage="/c19.png"
+                highlight="Stories, Insights & Tech"
+                description="A collection of my thoughts on technology, development, and personal experiences. Here I share what I learn and build."
+            />
 
             <div className={styles.container}>
 

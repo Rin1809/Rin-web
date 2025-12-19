@@ -447,7 +447,7 @@ const ProjectHero: React.FC = () => {
                             }
                         }}
                     >
-                        Download my Projects
+                        View Projects
                     </button>
 
 

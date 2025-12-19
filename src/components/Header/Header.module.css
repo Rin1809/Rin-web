@@ -96,6 +96,9 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s, background-color 0.2s;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
 
 .downloadButton:hover {

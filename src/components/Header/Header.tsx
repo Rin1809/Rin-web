@@ -29,13 +29,18 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className={styles.right}>
-                    <button className={styles.downloadButton}>
-                        Click me
+                    <a
+                        href="https://quybaotrotreemvietnam.org.vn/danh-muc/quyen-gop"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.downloadButton}
+                    >
+                        Donate
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px' }}>
                             <path d="M5 12h14" />
                             <path d="M12 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>

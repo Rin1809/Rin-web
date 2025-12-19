@@ -3,7 +3,7 @@
     height: 600vh;
     /* Scroll distance for 3 shapes */
     position: relative;
-    background-color: #ffffff;
+    /* background-color: #ffffff; Removed for transparency integration */
 }
 
 /* The actual hero section that stays pinned */

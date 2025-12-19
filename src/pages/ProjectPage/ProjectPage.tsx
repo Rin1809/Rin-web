@@ -39,10 +39,9 @@ const ProjectPage: React.FC = () => {
         <div className={styles.page}>
             <Header />
             <div className={styles.container}>
-
-
-                <ProjectHero />
             </div>
+
+            <ProjectHero />
 
             <WhatIsThis />
 

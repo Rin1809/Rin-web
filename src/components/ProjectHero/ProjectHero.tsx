@@ -5,6 +5,9 @@ interface Point {
     x: number;
     y: number;
     z: number;
+    r: number;
+    g: number;
+    b: number;
 }
 
 const ProjectHero: React.FC = () => {
@@ -24,58 +27,206 @@ const ProjectHero: React.FC = () => {
         let animationFrameId: number;
 
         // --- Configuration ---
-        const particleCount = 1000;
-        // Increased base radius significantly to fill screen (0.25 -> 0.45)
-        const baseRadius = Math.min(width, height) * 0.45;
+        const particleCount = 2000; // Increased for planet details
+        // Use Math.max to ensure it covers the width on landscape, and 0.6 for "full screen" feel
+        const baseRadius = Math.max(width, height) * 0.6;
+
+        // Helper to randomize point in sphere
+        const randomSpherePoint = (radius: number) => {
+            const u = Math.random();
+            const v = Math.random();
+            const theta = 2 * Math.PI * u;
+            const phi = Math.acos(2 * v - 1);
+            const r = Math.cbrt(Math.random()) * radius;
+            const sinPhi = Math.sin(phi);
+            return {
+                x: r * sinPhi * Math.cos(theta),
+                y: r * sinPhi * Math.sin(theta),
+                z: r * Math.cos(phi)
+            };
+        };
 
         // --- Shape Generation ---
 
-        // Shape 1: Helix / Wave (Original)
+        // Shape 1: Detailed Solar System
         const shape1: Point[] = [];
-        for (let i = 0; i < particleCount; i++) {
-            const t = i / particleCount;
-            const theta = t * Math.PI * 10;
-            // Spread along X axis - wider for full screen feel
-            const x = (t - 0.5) * width * 1.8;
-            const y = Math.sin(theta) * 150; // Taller wave
-            const z = Math.cos(theta) * 150;
-            shape1.push({ x, y, z });
+        const systemScale = baseRadius * 1.5;
+
+        // Helper to add a planet
+        const addPlanet = (
+            count: number,
+            orbitRadius: number,
+            planetRadius: number,
+            colorFn: () => { r: number, g: number, b: number },
+            hasRing: boolean = false
+        ) => {
+            // Random angle for orbit position
+            const orbitAngle = Math.random() * Math.PI * 2;
+            const cx = Math.cos(orbitAngle) * orbitRadius;
+            const cz = Math.sin(orbitAngle) * orbitRadius; // Orbit on XZ plane roughly
+
+            // Planet Body
+            for (let i = 0; i < count; i++) {
+                const p = randomSpherePoint(planetRadius);
+                const col = colorFn();
+                shape1.push({
+                    x: cx + p.x,
+                    y: p.y, // Flat plane
+                    z: cz + p.z,
+                    ...col
+                });
+            }
+
+            // Saturn Rings check
+            if (hasRing) {
+                const ringCount = 100;
+                for (let j = 0; j < ringCount; j++) {
+                    const angle = (j / ringCount) * Math.PI * 2;
+                    const r = planetRadius * 1.5 + Math.random() * planetRadius * 0.8;
+                    shape1.push({
+                        x: cx + Math.cos(angle) * r,
+                        y: (Math.random() - 0.5) * 5,
+                        z: cz + Math.sin(angle) * r,
+                        r: 180, g: 180, b: 150
+                    });
+                }
+            }
+
+            // Orbital Path (Trail)
+            const orbitPoints = 40;
+            for (let k = 0; k < orbitPoints; k++) {
+                const angle = (k / orbitPoints) * Math.PI * 2;
+                shape1.push({
+                    x: Math.cos(angle) * orbitRadius,
+                    y: 0,
+                    z: Math.sin(angle) * orbitRadius,
+                    r: 50, g: 50, b: 50 // Faint grey orbit line
+                });
+            }
+
+            // Return center for moons etc
+            return { x: cx, y: 0, z: cz };
+        };
+
+        // 1. Sun (Center)
+        for (let i = 0; i < 400; i++) {
+            const p = randomSpherePoint(systemScale * 0.3); // Big Sun
+            shape1.push({ ...p, r: 255, g: 100 + Math.random() * 100, b: 50 });
         }
 
-        // Shape 2: Sphere
+        // 2. Mercury
+        addPlanet(30, systemScale * 0.3, systemScale * 0.03, () => ({ r: 150, g: 150, b: 150 }));
+
+        // 3. Venus
+        addPlanet(40, systemScale * 0.45, systemScale * 0.05, () => ({ r: 200, g: 180, b: 100 }));
+
+        // 4. Earth + Moon
+        const earthPos = addPlanet(60, systemScale * 0.65, systemScale * 0.06, () => ({
+            r: Math.random() > 0.5 ? 50 : 255,
+            g: Math.random() > 0.5 ? 200 : 255,
+            b: 255
+        }));
+        // Moon
+        for (let i = 0; i < 15; i++) {
+            const p = randomSpherePoint(systemScale * 0.01);
+            shape1.push({
+                x: earthPos.x + systemScale * 0.07 + p.x,
+                y: p.y,
+                z: earthPos.z + p.z,
+                r: 200, g: 200, b: 200
+            });
+        }
+
+        // 5. Mars
+        addPlanet(50, systemScale * 0.85, systemScale * 0.05, () => ({ r: 255, g: 100, b: 100 }));
+
+        // 6. Jupiter
+        addPlanet(150, systemScale * 1.3, systemScale * 0.15, () => ({ r: 200, g: 150, b: 100 }));
+
+        // 7. Saturn + Rings
+        addPlanet(120, systemScale * 1.8, systemScale * 0.12, () => ({ r: 220, g: 200, b: 100 }), true);
+
+        // Fill remaining particle slots if any with random stars
+        while (shape1.length < particleCount) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = systemScale * 0.2 + Math.random() * systemScale * 1.5;
+            shape1.push({
+                x: Math.cos(angle) * dist,
+                y: (Math.random() - 0.5) * 500, // Background stars
+                z: Math.sin(angle) * dist,
+                r: 255, g: 255, b: 255
+            });
+        }
+
+        // Shape 2: Earth & Moon
         const shape2: Point[] = [];
-        const goldenRatio = (1 + Math.sqrt(5)) / 2;
         for (let i = 0; i < particleCount; i++) {
-            const theta = 2 * Math.PI * i / goldenRatio;
-            const phi = Math.acos(1 - 2 * (i + 0.5) / particleCount);
-            // Slightly scale up sphere
-            const x = baseRadius * 1.2 * Math.sin(phi) * Math.cos(theta);
-            const y = baseRadius * 1.2 * Math.sin(phi) * Math.sin(theta);
-            const z = baseRadius * 1.2 * Math.cos(phi);
-            shape2.push({ x, y, z });
+            if (i < 1000) {
+                // Earth Sphere (Ocean + Landish noise)
+                const p = randomSpherePoint(baseRadius);
+                // Simple noise for land/sea color
+                const noise = Math.sin(p.x * 0.02) + Math.cos(p.y * 0.02) + Math.sin(p.z * 0.02);
+                const isLand = noise > 0.5;
+
+                shape2.push({
+                    ...p,
+                    r: isLand ? 50 : 30,
+                    g: isLand ? 150 : 100,
+                    b: isLand ? 50 : 255 // Green-ish vs Blue
+                });
+            } else {
+                // Moon (Orbiting)
+                const p = randomSpherePoint(baseRadius * 0.25);
+                shape2.push({
+                    x: p.x + baseRadius * 1.6, // Offset to right
+                    y: p.y,
+                    z: p.z,
+                    r: 200, g: 200, b: 200 // Grey
+                });
+            }
         }
 
-        // Shape 3: Torus (Donut)
+        // Shape 3: Earth Core (Split View)
         const shape3: Point[] = [];
         for (let i = 0; i < particleCount; i++) {
-            const u = Math.random() * Math.PI * 2;
-            const v = Math.random() * Math.PI * 2;
-            const tubeRadius = baseRadius * 0.5; // Thicker tube
-            const ringRadius = baseRadius * 1.0;
+            if (i < 300) {
+                // The Core (Inner dense sphere) -> Reuse "Sun" particles ideally, but mapping is direct index
+                // Indexes 0-300 were Sun in Shape1. Let's make them the Core here.
+                const p = randomSpherePoint(baseRadius * 0.5);
+                shape3.push({
+                    ...p,
+                    r: 255, g: 50, b: 50 // Glowing Red Core
+                });
+            } else if (i < 1000) {
+                // Mantle/Crust (Split)
+                // We reuse Earth particles (Shape 2 indexes 300-1000 were part of Earth)
+                const p = shape2[i]; // Copy Earth position relative to center
+                // Logic: Move Left hemisphere Left, Right hemisphere Right
+                const splitDist = baseRadius * 1.2; // Wider split
+                const direction = p.x > 0 ? 1 : -1;
 
-            const x = (ringRadius + tubeRadius * Math.cos(v)) * Math.cos(u);
-            const y = (ringRadius + tubeRadius * Math.cos(v)) * Math.sin(u);
-            const z = tubeRadius * Math.sin(v);
-            shape3.push({ x, y, z });
+                shape3.push({
+                    x: p.x + direction * splitDist,
+                    y: p.y,
+                    z: p.z,
+                    r: 40, g: 30, b: 30 // Darker inner rock
+                });
+            } else {
+                // Moon (Stays roughly same or moves away)
+                const p = shape2[i];
+                shape3.push({
+                    x: p.x + 100, // Drift away
+                    y: p.y - 100,
+                    z: p.z,
+                    r: 100, g: 100, b: 100 // Fading moon
+                });
+            }
         }
-
-        // Current particle state
-        const currentParticles = shape1.map(p => ({ ...p }));
 
         // --- Animation Loop ---
 
         const render = (time: number) => {
-            // 1. Calculate Raw Scroll Progress (0 to 1) based on track height
+            // 1. Calculate Raw Scroll Progress
             let rawProgress = 0;
             if (track) {
                 const rect = track.getBoundingClientRect();
@@ -90,53 +241,53 @@ const ProjectHero: React.FC = () => {
             // Clamp
             rawProgress = Math.max(0, Math.min(1, rawProgress));
 
-            // 2. Define Phases with HOLD times
-            // 0.0 - 0.2: Hold Shape 1
-            // 0.2 - 0.4: Morph 1 -> 2
-            // 0.4 - 0.7: Hold Shape 2
-            // 0.7 - 0.9: Morph 2 -> 3
-            // 0.9 - 1.0: Hold Shape 3
+            // 2. Define Phases
+            // 0.0 - 0.2: Solar System (Hold)
+            // 0.2 - 0.4: Morph -> Earth
+            // 0.4 - 0.7: Earth (Hold)
+            // 0.7 - 0.9: Morph -> Core
+            // 0.9 - 1.0: Core (Hold)
 
             let sourceShape = shape1;
             let targetShape = shape1;
-            let mixFactor = 0; // 0 = source, 1 = target
+            let mixFactor = 0;
 
             if (rawProgress < 0.2) {
-                // Phase 1: Hold Helix
                 sourceShape = shape1;
                 targetShape = shape1;
                 mixFactor = 0;
             } else if (rawProgress < 0.4) {
-                // Phase 2: Morph Helix -> Sphere
                 sourceShape = shape1;
                 targetShape = shape2;
-                mixFactor = (rawProgress - 0.2) / 0.2; // 0..1
+                mixFactor = (rawProgress - 0.2) / 0.2;
             } else if (rawProgress < 0.7) {
-                // Phase 3: Hold Sphere
                 sourceShape = shape2;
                 targetShape = shape2;
                 mixFactor = 0;
             } else if (rawProgress < 0.9) {
-                // Phase 4: Morph Sphere -> Torus
                 sourceShape = shape2;
                 targetShape = shape3;
-                mixFactor = (rawProgress - 0.7) / 0.2; // 0..1
+                mixFactor = (rawProgress - 0.7) / 0.2;
             } else {
-                // Phase 5: Hold Torus
                 sourceShape = shape3;
                 targetShape = shape3;
                 mixFactor = 0;
             }
 
-            // Smoothstep ease
+            // Ease
             const ease = (t: number) => t * t * (3 - 2 * t);
             const easedT = ease(mixFactor);
 
             // Update particles
-            const rotationSpeed = time * 0.0002;
+            const rotationSpeed = time * 0.0001;
 
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = '#6495ED'; // Cornflower Blue
+
+            // Background is white in CSS, no fillRect needed unless we want dark mode
+            // Assuming white background based on CSS.
+            // But particles are colored/light. Let's see. 
+            // If background is white, 'Starry white' (200,200,255) won't show well.
+            // Adjusting Solar System debris to be darker: 100, 100, 150
 
             const cx = width / 2;
             const cy = height / 2;
@@ -145,33 +296,51 @@ const ProjectHero: React.FC = () => {
                 const src = sourceShape[i];
                 const dst = targetShape[i];
 
-                // Lerp position
+                // Lerp Position
                 let px = src.x + (dst.x - src.x) * easedT;
                 let py = src.y + (dst.y - src.y) * easedT;
                 let pz = src.z + (dst.z - src.z) * easedT;
 
-                // Rotate around Y axis
+                // Lerp Color
+                const r = Math.round(src.r + (dst.r - src.r) * easedT);
+                const g = Math.round(src.g + (dst.g - src.g) * easedT);
+                const b = Math.round(src.b + (dst.b - src.b) * easedT);
+
+                // Rotate Camera/World
                 const cosR = Math.cos(rotationSpeed);
                 const sinR = Math.sin(rotationSpeed);
 
-                const xRot = px * cosR - pz * sinR;
-                const zRot = pz * cosR + px * sinR;
-                px = xRot;
-                pz = zRot;
+                // 1. Y-axis rotation (Spin)
+                let xNew = px * cosR - pz * sinR;
+                let zNew = pz * cosR + px * sinR;
+                let yNew = py;
 
-                // Add "noise" wave
-                py += Math.sin(time * 0.001 + px * 0.01) * 10;
+                // 2. X-axis rotation (Tilt) - ~30 degrees
+                const tilt = 0.5; // radians
+                const cosT = Math.cos(tilt);
+                const sinT = Math.sin(tilt);
 
-                // 3D Perspective Projection
+                let yTilted = yNew * cosT - zNew * sinT;
+                let zTilted = yNew * sinT + zNew * cosT;
+
+                px = xNew;
+                py = yTilted;
+                pz = zTilted;
+
+                // 3D Projection
                 const fov = 2000;
-                const scale = fov / (fov + pz + 1000);
+                // Dynamic camera offset to ensure large shapes don't clip (safely fully viewable)
+                // Max radius is approx 3.0 * baseRadius (debris). Let's use 4.0 * baseRadius + fov buffer.
+                const cameraZ = baseRadius * 4 + 2000;
+
+                const scale = fov / (fov + pz + cameraZ);
 
                 const x2d = cx + px * scale;
                 const y2d = cy + py * scale;
-                const size = Math.max(0.5, 2 * scale);
+                const size = Math.max(1.5, 6 * scale);
 
                 // Draw
-                ctx.globalAlpha = 0.6 + Math.sin(i + time * 0.002) * 0.3; // Twinkle
+                ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
                 ctx.beginPath();
                 ctx.arc(x2d, y2d, size, 0, Math.PI * 2);
                 ctx.fill();

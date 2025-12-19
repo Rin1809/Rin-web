@@ -39,9 +39,7 @@ const ProjectPage: React.FC = () => {
         <div className={styles.page}>
             <Header />
             <div className={styles.container}>
-                <header className={styles.header}>
-                    <h1 className={styles.pageTitle}>Projects</h1>
-                </header>
+
 
                 <ProjectHero />
             </div>

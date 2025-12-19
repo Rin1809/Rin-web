@@ -163,8 +163,8 @@ const ProjectHero: React.FC = () => {
                 py += Math.sin(time * 0.001 + px * 0.01) * 10;
 
                 // 3D Perspective Projection
-                const fov = 800;
-                const scale = fov / (fov + pz + 400);
+                const fov = 2000;
+                const scale = fov / (fov + pz + 1000);
 
                 const x2d = cx + px * scale;
                 const y2d = cy + py * scale;
@@ -200,37 +200,16 @@ const ProjectHero: React.FC = () => {
                 <canvas ref={canvasRef} className={styles.canvas} />
 
                 <div className={styles.contentWrapper}>
-                    <h1 className={styles.title}>Fullstack</h1>
+                    <h1 className={styles.title}>Project</h1>
                     <p className={styles.description}>
-                        Antigravity's Agents place an emphasis on verification, communicating to users via Artifacts and tasks to tackle more complex challenges and build user trust in their code.
+                        This is place i show what i builded. Just some trash project, but i learned a lot from it - my trash. :)
                     </p>
 
                     <button className={styles.actionButton}>
                         Explore use case
                     </button>
 
-                    <div className={styles.chipsContainer}>
-                        <div className={styles.chip}>
-                            <svg className={styles.chipIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                            </svg>
-                            Professional
-                        </div>
-                        <div className={styles.chip}>
-                            <svg className={styles.chipIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                            Frontend
-                        </div>
-                        <div className={`${styles.chip} ${styles.chipActive}`}>
-                            <svg className={styles.chipIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                            Fullstack
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 .scrollTrack {
     width: 100%;
-    height: 600vh;
-    /* Scroll distance for 3 shapes */
+    height: 800vh;
+    /* Scroll distance for 4 shapes */
     position: relative;
     /* background-color: #ffffff; Removed for transparency integration */
 }

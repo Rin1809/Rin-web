@@ -48,6 +48,53 @@ const ProjectHero: React.FC = () => {
 
         // --- Shape Generation ---
 
+        // Shape 0: Galaxy Spiral (Ngân Hà)
+        const shape0: Point[] = [];
+        const galaxyArms = 3; // Fewer arms for clarity
+        const galaxyScale = baseRadius * 3.5; // HUGE scaling
+
+        for (let i = 0; i < particleCount; i++) {
+            // 1. Choose an arm
+            const armIndex = i % galaxyArms;
+
+            // 2. Exponential distance for bright center
+            const distFactor = Math.random();
+            // Tighter winding: 3 full turns (6PI)
+            const spiralAngle = distFactor * Math.PI * 6;
+            const armBaseAngle = (armIndex / galaxyArms) * Math.PI * 2;
+
+            const angle = armBaseAngle + spiralAngle;
+            const r = distFactor * galaxyScale;
+
+            // 3. Scatter/Spread
+            // Spread increases with radius, but kept tight
+            const randomOffset = (Math.random() - 0.5) + (Math.random() - 0.5);
+            const spread = randomOffset * (baseRadius * 0.15 + r * 0.15);
+
+            const x = Math.cos(angle) * r + Math.cos(angle + Math.PI / 2) * spread;
+            const z = Math.sin(angle) * r + Math.sin(angle + Math.PI / 2) * spread;
+            const y = (Math.random() - 0.5) * (baseRadius * 0.1);
+
+            // Colors
+            let rCol = 0, gCol = 0, bCol = 0;
+            if (distFactor < 0.1) {
+                rCol = 255; gCol = 240; bCol = 200; // Bright Center
+            } else {
+                const colorRand = Math.random();
+                if (colorRand > 0.5) {
+                    rCol = 100 + Math.random() * 100; // Purpleish
+                    gCol = 50;
+                    bCol = 255;
+                } else {
+                    rCol = 50;
+                    gCol = 100 + Math.random() * 50;
+                    bCol = 255; // Blueish
+                }
+            }
+
+            shape0.push({ x, y, z, r: rCol, g: gCol, b: bCol });
+        }
+
         // Shape 1: Detailed Solar System
         const shape1: Point[] = [];
         const systemScale = baseRadius * 1.5;
@@ -241,34 +288,51 @@ const ProjectHero: React.FC = () => {
             // Clamp
             rawProgress = Math.max(0, Math.min(1, rawProgress));
 
-            // 2. Define Phases
-            // 0.0 - 0.2: Solar System (Hold)
-            // 0.2 - 0.4: Morph -> Earth
-            // 0.4 - 0.7: Earth (Hold)
-            // 0.7 - 0.9: Morph -> Core
-            // 0.9 - 1.0: Core (Hold)
+            // 2. Define Phases with HOLD times (4 Phases)
+            // 0.00 - 0.15: Galaxy
+            // 0.15 - 0.35: -> Solar
+            // 0.35 - 0.50: Solar
+            // 0.50 - 0.65: -> Earth
+            // 0.65 - 0.75: Earth
+            // 0.75 - 0.90: -> Core
+            // 0.90 - 1.00: Core
 
-            let sourceShape = shape1;
-            let targetShape = shape1;
-            let mixFactor = 0;
+            let sourceShape = shape0;
+            let targetShape = shape0;
+            let mixFactor = 0; // 0 = source, 1 = target
 
-            if (rawProgress < 0.2) {
+            if (rawProgress < 0.15) {
+                // Phase 0: Galaxy
+                sourceShape = shape0;
+                targetShape = shape0;
+                mixFactor = 0;
+            } else if (rawProgress < 0.35) {
+                // Morph Galaxy -> Solar
+                sourceShape = shape0;
+                targetShape = shape1;
+                mixFactor = (rawProgress - 0.15) / 0.20;
+            } else if (rawProgress < 0.50) {
+                // Phase 1: Solar
                 sourceShape = shape1;
                 targetShape = shape1;
                 mixFactor = 0;
-            } else if (rawProgress < 0.4) {
+            } else if (rawProgress < 0.65) {
+                // Morph Solar -> Earth
                 sourceShape = shape1;
                 targetShape = shape2;
-                mixFactor = (rawProgress - 0.2) / 0.2;
-            } else if (rawProgress < 0.7) {
+                mixFactor = (rawProgress - 0.50) / 0.15;
+            } else if (rawProgress < 0.75) {
+                // Phase 2: Earth
                 sourceShape = shape2;
                 targetShape = shape2;
                 mixFactor = 0;
-            } else if (rawProgress < 0.9) {
+            } else if (rawProgress < 0.90) {
+                // Morph Earth -> Core
                 sourceShape = shape2;
                 targetShape = shape3;
-                mixFactor = (rawProgress - 0.7) / 0.2;
+                mixFactor = (rawProgress - 0.75) / 0.15;
             } else {
+                // Phase 3: Core
                 sourceShape = shape3;
                 targetShape = shape3;
                 mixFactor = 0;

@@ -438,8 +438,16 @@ const ProjectHero: React.FC = () => {
                         This is place i show what i builded. Just some trash project, but i learned a lot from it - my trash. :)
                     </p>
 
-                    <button className={styles.actionButton}>
-                        Explore use case
+                    <button
+                        className={styles.actionButton}
+                        onClick={() => {
+                            const section = document.getElementById('latest-projects');
+                            if (section) {
+                                section.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                    >
+                        Download my Projects
                     </button>
 
 

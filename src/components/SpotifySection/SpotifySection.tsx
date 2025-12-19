@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './SpotifySection.module.css';
 
 const PLAYLISTS = [
@@ -26,6 +26,22 @@ const PLAYLISTS = [
 
 const SpotifySection: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isInteractive, setIsInteractive] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Handle click outside to reset interactivity
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setIsInteractive(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev === 0 ? PLAYLISTS.length - 1 : prev - 1));
@@ -49,9 +65,19 @@ const SpotifySection: React.FC = () => {
                     <img src="/c71.png" alt="" className={styles.mascot} />
 
                     {/* Left: Spotify Embed */}
-                    <div className={styles.embedContainer}>
+                    <div
+                        className={styles.embedContainer}
+                        ref={containerRef}
+                    >
+                        {!isInteractive && (
+                            <div
+                                className={styles.overlay}
+                                onClick={() => setIsInteractive(true)}
+                                title="Click to interact with Spotify"
+                            />
+                        )}
                         <iframe
-                            style={{ borderRadius: '12px' }}
+                            style={{ borderRadius: '12px', pointerEvents: isInteractive ? 'auto' : 'none' }}
                             src={`https://open.spotify.com/embed/playlist/${currentPlaylist.id}?utm_source=generator&theme=0`}
                             width="100%"
                             height="352"

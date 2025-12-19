@@ -1,12 +1,12 @@
 export const blogs = [
     {
         id: 1,
-        title: "The Ultimate Guide to Kitten Naps",
+        title: "10+ LAB Cisco Configuration",
         date: "Dec 15, 2025",
-        category: "Lifestyle",
-        image: "/cat-blog-1.png",
-        imageCaption: "Sleepy paws",
-        description: "Discover the secrets to the perfect cat nap. From finding the sunniest spots to achieving the ultimate curled-up position, learn how your feline friend masters the art of sleep.",
+        category: "Network",
+        image: "/ciscodiagram.png",
+        imageCaption: "Cisco Network Diagram",
+        description: "How a company network look like, and how to configure it. Step by Step to configure with Cisco's device. Company network is a complex system, but with this guide, you can configure it easily. Tech: Radius, DHCP, DNS, NAT, Vlan, Trunk, Subnetting, Routing, Access Point, Switching, Load Balancing, Security, Backup, Restore, etc.",
         link: "#",
         contentPath: "/posts/blog-1.md",
         videoUrl: "https://www.youtube-nocookie.com/embed/TLvMXOEXi_k"
@@ -26,14 +26,14 @@ export const blogs = [
     },
     {
         id: 3,
-        title: "Why Cats Love Boxes More Than Beds",
+        title: "Security System With Pfsense",
         date: "Dec 13, 2025",
-        category: "Psychology",
+        category: "Cybersecurity - Network",
         image: "/cat-blog-3.png",
-        imageCaption: "Box lover",
-        description: "An in-depth look into the feline psyche. Why do they ignore the expensive bed you bought and choose the cardboard packaging instead? Science explains.",
+        imageCaption: "Pfsense Firewall",
+        description: "A comprehensive guide to designing a secure small business network using Pfsense Firewall. Covers network segmentation (LAN/DMZ), NAT, Web Access Restriction, User Group Management, Policy, etc.",
         link: "#",
-        contentPath: "/posts/blog-1.md",
+        contentPath: "/posts/blog-3.md",
         videoUrl: "https://www.youtube-nocookie.com/embed/TLvMXOEXi_k"
     },
     {

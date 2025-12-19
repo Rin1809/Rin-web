@@ -16,7 +16,7 @@ export const projects: Project[] = [
         image: "/container.png",
         downloadUrl: "#",
         githubUrl: "https://github.com/Rin1809",
-        docsUrl: "#"
+        docsUrl: "/posts/blog-3.md"
     },
     {
         id: 2,

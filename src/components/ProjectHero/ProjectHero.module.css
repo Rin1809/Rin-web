@@ -57,23 +57,58 @@
     margin: 0 auto;
 }
 
-.actionButton {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: none;
-    border-radius: 9999px;
-    font-size: 0.9rem;
-    font-weight: 500;
+/* Scroll Down CTA */
+.scrollDownWrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: opacity 0.3s;
 }
 
-.actionButton:hover {
-    transform: translateY(-2px);
-    background-color: #000000;
+.scrollDownWrapper:hover {
+    opacity: 0.7;
 }
+
+.scrollText {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scrollArrow {
+    width: 24px;
+    height: 24px;
+    color: #1a1a1a;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(6px);
+    }
+
+    60% {
+        transform: translateY(3px);
+    }
+}
+
 
 .chipsContainer {
     margin-top: 3rem;

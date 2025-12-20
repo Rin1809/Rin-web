@@ -438,8 +438,8 @@ const ProjectHero: React.FC = () => {
                         This is place i show what i builded. Just some trash project, but i learned a lot from it - my trash. :)
                     </p>
 
-                    <button
-                        className={styles.actionButton}
+                    <div
+                        className={styles.scrollDownWrapper}
                         onClick={() => {
                             const section = document.getElementById('latest-projects');
                             if (section) {
@@ -447,8 +447,17 @@ const ProjectHero: React.FC = () => {
                             }
                         }}
                     >
-                        View Projects
-                    </button>
+                        <span className={styles.scrollText}>Scroll Down</span>
+                        <svg
+                            className={styles.scrollArrow}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
 
 
                 </div>

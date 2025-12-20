@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
                 <div className={styles.right}>
                     <a
-                        href="https://quybaotrotreemvietnam.org.vn/danh-muc/quyen-gop"
+                        href="https://quybaotrotreemvietnam.org.vn"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.downloadButton}

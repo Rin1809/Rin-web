@@ -9,7 +9,7 @@ const GithubStatsSection = () => {
                 <h2 className={styles.sectionTitle}>Github Stats</h2>
 
                 <div className={styles.contentWrapper}>
-                    {/* Left Column: Avatar Only */}
+                    {/* Cot trai: Avatar thoi, don gian */}
                     <div className={styles.profileColumn}>
                         <div className={styles.avatarWrapper}>
                             <img
@@ -28,7 +28,7 @@ const GithubStatsSection = () => {
                         </a>
                     </div>
 
-                    {/* Right Column: 2x2 Stats Grid */}
+                    {/* Cot phai: Luoi thong ke 2x2 (Show hang) */}
                     <div className={styles.statsColumn}>
                         <div className={styles.cardGrid}>
                             <img

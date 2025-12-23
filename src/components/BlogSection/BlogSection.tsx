@@ -35,7 +35,7 @@ const BlogSection: React.FC = () => {
                 </div>
 
                 <div className={styles.contentSplit}>
-                    {/* Left Column: Blogs + Pagination */}
+                    {/* Cot trai: Blog + Phan trang (Chia de tri) */}
                     <div className={styles.leftColumn}>
                         <div className={styles.blogGrid}>
                             {currentBlogs.map((blog) => (
@@ -75,7 +75,7 @@ const BlogSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Static Image */}
+                    {/* Cot phai: Hinh anh tinh, nhung tam hon dong */}
                     <div className={styles.rightColumn}>
                         <div
                             className={styles.imageDisplayWrapper}

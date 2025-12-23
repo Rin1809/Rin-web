@@ -16,13 +16,13 @@ const projects = [
     },
     {
         id: 3,
-        title: "Skills",
+        title: "Skills I Can Do",
         description: "We all have blind spots when it comes to our own character.",
         image: "/3.jpg"
     },
     {
         id: 4,
-        title: "Languages",
+        title: "Languages I Can Speak",
         description: "Vietnamese Native, Japanese N2 certified, English self-assessed to be at least equivalent to my Japanese level. Using English for work - schools. Japanese for friends. :)",
         image: "/4.jpg"
     },
@@ -82,7 +82,7 @@ const PjSection = () => {
                             )}
                         </div>
                     ))}
-                    {/* Spacer to allow last item to scroll fully away if needed, or just enough padding */}
+                    {/* Dem them ty o duoi de scroll cho thoang, dung hoi, not fix bug dau */}
                     <div className={styles.spacer}></div>
                 </div>
 

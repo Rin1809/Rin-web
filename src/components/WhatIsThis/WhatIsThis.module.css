@@ -1,23 +1,23 @@
 .section {
     width: 100%;
     max-width: 1400px;
-    /* Much wider than the main container */
+    /* Rong hon container chinh mot ti cho no hoanh trang */
     margin: 0 auto 120px auto;
-    /* Center the section */
+    /* Canh giua section */
     padding: 0 40px;
     display: flex;
     flex-direction: column;
-    /* changes to column to handle title centering easier, or keep row and adjust */
+    /* Doi sang cot de de canh giua tieu de hon */
 }
 
-/* Container for the 2-column content */
+/* Container cho noi dung 2 cot */
 .contentWrapper {
     display: flex;
     align-items: center;
-    /* Center vertically */
+    /* Canh giua doc */
     justify-content: space-between;
     gap: 80px;
-    /* Bigger gap */
+    /* Khoang cach rong hon */
     width: 100%;
 }
 
@@ -27,14 +27,14 @@
     margin-bottom: 60px;
     color: #202124;
     text-align: center;
-    /* Center the title */
+    /* Canh giua tieu de */
     width: 100%;
 }
 
 .textContent {
     flex: 1;
     max-width: 500px;
-    /* Limit text width for readability */
+    /* Gioi han chieu rong text cho de doc */
 }
 
 .description {
@@ -50,13 +50,13 @@
     display: block;
     margin-bottom: 24px;
     font-size: 1.5rem;
-    /* Larger highlight */
+    /* Highlight to hon */
     line-height: 1.3;
 }
 
 .imageWrapper {
     flex: 1.5;
-    /* Give image more space */
+    /* Cho hinh nhieu cho trong hon */
     display: flex;
     justify-content: flex-end;
 }
@@ -64,19 +64,19 @@
 .image {
     width: 100%;
     max-width: 800px;
-    /* Allow image to be much bigger */
+    /* Cho phep hinh to hon nhieu */
     height: auto;
     object-fit: cover;
     display: block;
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
     transition: opacity 0.3s ease;
-    /* Smooth transition for image swap if needed, though src swap is instant usually, maybe crossfade is better but standard swap is fine */
+    /* Hieu ung chuyen doi min mang */
 }
 
 @media (max-width: 1100px) {
     .contentWrapper {
         flex-direction: column-reverse;
-        /* Stack text under image or keep logical? usually image top or text top. Let's stack standard. */
+        /* Xep chong len nhau tren mobile, text o duoi hay tren? Thoi cu de standard */
         flex-direction: column;
         gap: 60px;
         align-items: center;

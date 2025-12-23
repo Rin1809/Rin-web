@@ -3,7 +3,7 @@
     position: relative;
     z-index: 10;
     color: #e2e8f0;
-    /* Light text for dark background */
+    /* Chu mau sang cho nen toi (Dark mode is da best) */
 }
 
 .container {
@@ -29,7 +29,7 @@
     align-items: flex-start;
 }
 
-/* Left Column: Profile (Avatar Only) */
+/* Cot trai: Avatar (Guong mat thuong hieu) */
 .profileColumn {
     flex: 0 0 300px;
     display: flex;
@@ -66,7 +66,7 @@
     height: 250px;
     border-radius: 50%;
     overflow: hidden;
-    /* Clean look, no heavy borders from previous design */
+    /* Don gian thoi, dung lam loe loet qua */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
@@ -79,7 +79,7 @@
     object-fit: cover;
 }
 
-/* Right Column: Stats Grid (2x2) */
+/* Cot phai: Luoi thong ke (Bang thanh tich) */
 .statsColumn {
     flex: 1;
     display: flex;
@@ -89,7 +89,7 @@
 .cardGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* Enforce 2 columns */
+    /* 2 cot la dep nhat */
     gap: 20px;
 }
 
@@ -103,7 +103,7 @@
     grid-column: span 2;
 }
 
-/* Responsive */
+/* Responsive (Di dong) */
 @media (max-width: 900px) {
     .contentWrapper {
         flex-direction: column;
@@ -124,11 +124,11 @@
 
     .cardGrid {
         grid-template-columns: 1fr;
-        /* Stack on mobile */
+        /* Xep chong len nhau tren mobile */
     }
 
     .fullWidthCard {
         grid-column: auto;
-        /* Reset span on mobile */
+        /* Reset lai */
     }
 }

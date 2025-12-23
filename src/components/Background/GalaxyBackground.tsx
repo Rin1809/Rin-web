@@ -3,13 +3,13 @@ import { useEffect, useRef } from 'react';
 const GalaxyBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    // Config
-    const PARTICLE_COUNT = 2000; // Match ProjectHero
+    // Cau hinh vu tru 
+    const PARTICLE_COUNT = 2000; // Nhieu hat qua thi lag, it qua thi trong hoi pheng
     const GALAXY_ARMS = 3;
     const MOUSE_REPULSION_RADIUS = 100;
     const MOUSE_PUSH_FORCE = 15;
 
-    // Types
+    // Dinh nghia kieu du lieu
     interface Particle {
         x: number;      // Current 2D drawing position (with interaction)
         y: number;
@@ -23,7 +23,7 @@ const GalaxyBackground = () => {
     }
 
     const particles = useRef<Particle[]>([]);
-    const mouse = useRef({ x: -1000, y: -1000 }); // Start off-screen
+    const mouse = useRef({ x: -1000, y: -1000 }); // Gia bo chuot o xa tit mu khoi de khoi bi xao dong
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -34,25 +34,25 @@ const GalaxyBackground = () => {
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
-        // Init Particles (Galaxy Shape)
+        // Khoi tao Ngan Ha (Galaxy) 
         if (particles.current.length === 0) {
-            // Match ProjectHero: baseRadius 0.6, scale 3.5
+            // Base radius hoi to ti cho no dep
             const baseRadius = Math.max(width, height) * 0.6;
             const galaxyScale = baseRadius * 3.5;
 
             for (let i = 0; i < PARTICLE_COUNT; i++) {
-                // Galaxy Logic from ProjectHero.tsx
+                // Copy logic tao hinh xoan oc tu cai ProjectHero qua
                 const armIndex = i % GALAXY_ARMS;
                 const distFactor = Math.random();
 
-                // ProjectHero: const spiralAngle = distFactor * Math.PI * 6;
+                // Xoay xoay xoay xoay
                 const spiralAngle = distFactor * Math.PI * 6;
                 const armBaseAngle = (armIndex / GALAXY_ARMS) * Math.PI * 2;
 
                 const angle = armBaseAngle + spiralAngle;
                 const r = distFactor * galaxyScale;
 
-                // Scatter
+                // Lam roi tung len mot ty cho tu nhien
                 const randomOffset = (Math.random() - 0.5) + (Math.random() - 0.5);
                 const spread = randomOffset * (baseRadius * 0.15 + r * 0.15);
 
@@ -60,14 +60,13 @@ const GalaxyBackground = () => {
                 const z3d = Math.sin(angle) * r + Math.sin(angle + Math.PI / 2) * spread;
                 const y3d = (Math.random() - 0.5) * (baseRadius * 0.1);
 
-                // Colors
+                // Mau me hoa la he
                 let rCol, gCol, bCol;
                 if (distFactor < 0.1) {
-                    // Center: #f2274e (242, 39, 78)
+                    // Tam diem ruc ro
                     rCol = 242; gCol = 39; bCol = 78;
                 } else {
-                    // Main: #fcb9c6 (252, 185, 198)
-                    // Slight variation for depth
+                    // Mau hong chu dao, nhin cho no dep
                     const v = (Math.random() - 0.5) * 30;
                     rCol = 252 + v;
                     gCol = 185 + v;
@@ -95,7 +94,7 @@ const GalaxyBackground = () => {
         window.addEventListener('resize', resize);
 
         const onMouseMove = (e: MouseEvent) => {
-            // Adjust mouse Y for scrolling since canvas is absolute top 0
+            // Tinh ca cai scroll cua trinh duyet nua 
             mouse.current.x = e.clientX;
             mouse.current.y = e.clientY + window.scrollY;
         };
@@ -110,7 +109,7 @@ const GalaxyBackground = () => {
             const cx = width / 2;
             const cy = height / 2;
 
-            // Camera props
+            // Goc nhin camera
             const fov = 2000;
             const tilt = 0.5; // Radians, standard pleasant tilt
             const cosT = Math.cos(tilt);
@@ -118,31 +117,31 @@ const GalaxyBackground = () => {
             const cosR = Math.cos(rotationSpeed);
             const sinR = Math.sin(rotationSpeed);
 
-            // ProjectHero: const cameraZ = baseRadius * 4 + 2000;
+            // Dat camera xa xa ti moi thay het duoc
             const baseRadius = Math.max(width, height) * 0.6;
             const cameraZ = baseRadius * 4 + 2000;
 
             particles.current.forEach(p => {
-                // 1. Rotate 3D
-                // Y-axis spin
+                // 1. Quay 3D
+                // Truc Y
                 let x1 = p.baseX3D * cosR - p.baseZ3D * sinR;
                 let z1 = p.baseZ3D * cosR + p.baseX3D * sinR;
                 let y1 = p.baseY3D;
 
-                // X-axis tilt
+                // Truc X (nghieng nghieng)
                 let y2 = y1 * cosT - z1 * sinT;
                 let z2 = y1 * sinT + z1 * cosT;
 
-                // 2. Project 3D -> 2D Target
-                // Perspective projection
+                // 2. Chieu tu 3D xuong 2D de ve len man hinh
+                // Phep chieu phoi canh
                 const scale = fov / (fov + z2 + cameraZ);
                 const targetX = cx + x1 * scale;
                 const targetY = cy + y2 * scale;
 
-                // 3. Interaction (Mouse Repulsion)
-                // We move p.x/p.y towards targetX/targetY, but pushed by mouse
+                // 3. Tuong tac (Ne chuot ra)
+                // Hat nao gan chuot qua thi bi day ra, giong nhu nam cham cung cuc vay
 
-                // Repulsion logic
+                // Tinh luc day
                 const dx = targetX - mouse.current.x;
                 const dy = targetY - mouse.current.y;
                 const distSq = dx * dx + dy * dy;
@@ -156,11 +155,9 @@ const GalaxyBackground = () => {
                     const angle = Math.atan2(dy, dx);
                     const push = force * MOUSE_PUSH_FORCE;
 
-                    // We directly modify target to include push, effectively
-                    // But to keep it sticking when mouse is gone, we apply to current pos logic
+                    // Day no di cho khac
 
-                    // Simpler approach:
-                    // Desired position is Target + Push
+                    // Cach don gian nhat: Vi tri moi = Vi tri cu + Luc day
                     offsetX = Math.cos(angle) * push * 20; // 20 multiplier to make it noticeable
                     offsetY = Math.sin(angle) * push * 20;
                 }
@@ -168,12 +165,12 @@ const GalaxyBackground = () => {
                 const finalTargetX = targetX + offsetX;
                 const finalTargetY = targetY + offsetY;
 
-                // Smoothly interpolate current pos to final target
+                // Chuyen dong muot ma (Linear Interpolation)
                 p.x += (finalTargetX - p.x) * 0.1;
                 p.y += (finalTargetY - p.y) * 0.1;
 
-                // Draw
-                // ProjectHero uses: const size = Math.max(1.5, 6 * scale);
+                // Ve thoi, cho gi nua
+                // To nho tuy thuoc vao xa gan
                 const size = Math.max(1.5, 6 * scale);
                 ctx.fillStyle = `rgb(${p.r}, ${p.g}, ${p.b})`;
                 ctx.beginPath();
@@ -197,14 +194,14 @@ const GalaxyBackground = () => {
         <canvas
             ref={canvasRef}
             style={{
-                position: 'absolute', // Scroll away with page
+                position: 'absolute', // Scroll theo page chu khong dung im, cai nay quan trong nha
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '100vh', // Cover initial viewport height 
+                height: '100vh', // Chi can phu kin man hinh luc dau thoi 
                 pointerEvents: 'none',
                 zIndex: -1,
-                background: '#ffffff', // Or generic dark bg if preferred, user said main page background
+                background: '#ffffff', // Nen trang tinh khoi
             }}
         />
     );

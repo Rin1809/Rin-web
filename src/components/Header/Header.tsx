@@ -24,7 +24,7 @@ const Header: React.FC = () => {
                         <span className={styles.highlight}>Rin  -</span>  Lyn
                     </span>
 
-                    {/* Desktop Nav */}
+                    {/* Menu cho may tinh */}
                     <nav className={styles.nav}>
                         <Link to="/project" className={styles.navLink}>Project</Link>
                         <Link to="/blog" className={styles.navLink}>Blog</Link>
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                         </svg>
                     </a>
 
-                    {/* Hamburger Button */}
+                    {/* Nut hamburger, bam vao ra menu */}
                     <button className={styles.hamburger} onClick={toggleMenu} aria-label="Toggle menu">
                         {isMenuOpen ? (
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu Dropdown */}
+            {/* Menu mobile xo xuong, hoi lag ty thong cam */}
             {isMenuOpen && (
                 <div className={styles.mobileMenu}>
                     <Link to="/project" className={styles.mobileNavLink} onClick={toggleMenu}>Project</Link>

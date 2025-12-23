@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const newLenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Cong thuc toan hoc nhuc dau de lam muot scroll
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,

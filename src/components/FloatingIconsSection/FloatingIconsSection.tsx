@@ -20,9 +20,9 @@ const icons = [
     { Icon: MousePointer2, delay: 0, offset: 0 },
     { Icon: CheckCircle2, delay: 1.2, offset: 40 },
     { Icon: PenTool, delay: 2.4, offset: 80 },
-    { Icon: Folder, delay: 0.8, offset: 120 }, // Low
+    { Icon: Folder, delay: 0.8, offset: 120 }, // Thap thap duoi dat
     { Icon: LayoutGrid, delay: 3.0, offset: 60 },
-    { Icon: Sparkles, delay: 1.5, offset: -20 }, // High
+    { Icon: Sparkles, delay: 1.5, offset: -20 }, // Cao tit tren may
     { Icon: Braces, delay: 4.0, offset: 50 },
     { Icon: Move, delay: 2.2, offset: 100 },
     { Icon: Code2, delay: 0.5, offset: 30 },
@@ -46,7 +46,7 @@ const FloatingIconsSection = () => {
                     setHasStarted(true);
                 }
             },
-            { threshold: 0.3 } // Start when 30% visible
+            { threshold: 0.3 } // Hien len khi thay duoc 30% roi
         );
 
         if (sectionRef.current) {
@@ -62,7 +62,7 @@ const FloatingIconsSection = () => {
 
         const timer = setInterval(() => {
             setDisplayedText((prev) => {
-                // Ensure we don't exceed fullText length
+                // Khong duoc chay qua dai, hong het chu
                 const nextIndex = prev.length + 1;
                 if (nextIndex <= fullText.length) {
                     return fullText.slice(0, nextIndex);
@@ -79,7 +79,7 @@ const FloatingIconsSection = () => {
         <section className={styles.section} ref={sectionRef}>
             <div className={styles.contentWrapper}>
                 <div className={styles.splitLayout}>
-                    {/* Left: GIF */}
+                    {/* Ben trai: Hinh dong em Kurumi dang yeu */}
                     <div
                         className={styles.gifContainer}
                         onMouseEnter={() => setIsHovered(true)}
@@ -92,9 +92,9 @@ const FloatingIconsSection = () => {
                         />
                     </div>
 
-                    {/* Right: Text */}
+                    {/* Ben phai: Chu chay nhu hacker */}
                     <div className={styles.titleWrapper}>
-                        {/* Ghost text to reserve space */}
+                        {/* Chu ma (Ghost) de giu cho, khong so bi nhay layout */}
                         <h2 className={`${styles.title} ${styles.ghost}`}>
                             {fullText.split('\n').map((line, index) => (
                                 <span key={index}>
@@ -104,7 +104,7 @@ const FloatingIconsSection = () => {
                             ))}
                         </h2>
 
-                        {/* Actual animated text overlay */}
+                        {/* Chu that hien len tung ky tu */}
                         <h2 className={styles.title}>
                             {displayedText.split('\n').map((line, index) => (
                                 <span key={index}>
@@ -123,13 +123,13 @@ const FloatingIconsSection = () => {
                             key={index}
                             className={styles.iconWrapper}
                             style={{
-                                transform: `translateY(${item.offset}px)`, // Static wave layout
+                                transform: `translateY(${item.offset}px)`, // Song sin tinh (Static wave layout)
                             }}
                         >
                             <div
                                 className={styles.iconBubble}
                                 style={{
-                                    animationDelay: `${item.delay}s` // Dynamic floating timing
+                                    animationDelay: `${item.delay}s` // Moi em mot nhip, khong ai giong ai
                                 }}
                             >
                                 <item.Icon size={40} strokeWidth={1.5} />

@@ -3,7 +3,7 @@ export interface Project {
     title: string;
     description: string;
     image: string;
-    downloadUrl: string; // Path to zip file
+    downloadUrl: string; // Duong dan tai file zip (hang nong)
     githubUrl: string;
     docsUrl?: string;
 }

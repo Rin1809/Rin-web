@@ -1,13 +1,13 @@
 .section {
     padding: 180px 0 120px;
-    /* Increased top padding to 180px for separation */
-    /* background-color: #ffffff; Removed to show TechSwarm background */
+    /* Day xuong mot ti cho no thoang (180px) */
+    /* background-color: #ffffff; Xoa di de thay cai nen TechSwarm ao dieu */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
     z-index: 20;
-    /* align-items: center; REMOVED center alignment */
+    /* align-items: center; DA XOA canh giua, de tu nhien */
 }
 
 .contentWrapper {
@@ -22,7 +22,7 @@
 .splitLayout {
     display: flex;
     align-items: center;
-    /* Center vertically */
+    /* Canh giua theo truc doc */
     gap: 60px;
     margin-bottom: 100px;
     max-width: 1000px;
@@ -33,7 +33,7 @@
 .gifContainer {
     flex-shrink: 0;
     width: 450px;
-    /* Adjust as needed */
+    /* Chinh kich thuoc o day nay */
     display: flex;
     justify-content: center;
 }
@@ -41,15 +41,15 @@
 .gif {
     width: 100%;
     height: 450px;
-    /* Fixed height to prevent layout shift on image swap */
+    /* Chieu cao co dinh de khong bi nhay hinh */
     object-fit: contain;
 }
 
 .titleWrapper {
     position: relative;
     flex: 1;
-    /* Take remaining space */
-    /* Remove max-width limitation here if parent constrains it */
+    /* Chiems het phan con lai */
+    /* Xoa max-width neu can */
 }
 
 .title {
@@ -57,13 +57,13 @@
     line-height: 1.2;
     color: #202124;
     width: 100%;
-    /* Ensure overlay matches wrapper width */
+    /* Dam bao no phu kin wrapper */
     font-weight: 400;
     letter-spacing: -0.03em;
     text-align: left;
     margin: 0;
 
-    /* Absolute position for the animated one */
+    /* Vi tri tuyet doi cho cai chu chay chay */
     position: absolute;
     top: 0;
     left: 0;
@@ -71,13 +71,13 @@
 
 .ghost {
     position: relative;
-    /* Ghost dictates the height */
+    /* Chu ma quyet dinh chieu cao cua khung */
     visibility: hidden;
-    /* Invisible but takes up space */
+    /* Tang hinh nhung van chiem cho */
     pointer-events: none;
 }
 
-/* Blinking Cursor */
+/* Con tro nhap nhay (Blinking Cursor) */
 .cursor {
     display: inline-block;
     width: 3px;
@@ -101,45 +101,45 @@
 }
 
 /* Icons Wave Container */
-/* Icons Wave Container */
+/* Song bieu tuong (Icons Wave Container) */
 .iconsContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: max-content;
-    /* Allow container to grow beyond 100% to spill over */
+    /* Cho phep no tran ra ngoai man hinh */
     min-width: 100%;
     padding: 0 40px;
     margin-left: 50%;
-    /* Center the overflow */
+    /* Canh giua phan tran ra */
     transform: translateX(-50%);
     position: relative;
     padding-bottom: 20px;
     gap: 60px;
-    /* Increased gap */
+    /* Khoang cach rong rai thoai mai */
     flex-wrap: nowrap;
-    /* Keep in a single line to maintain wave effect */
+    /* Giu tren mot dong de tao song */
 }
 
-/* Wrapper handles the static wave offset */
+/* Wrapper xu ly cai song tinh (Static wave) */
 .iconWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    /* No animation here, just static transform */
+    /* Khong hoat hinh o day, chi dung im thoi */
 }
 
-/* Individual Icon Bubble */
-/* Individual Icon Bubble handles the floating animation */
+/* Bong bong icon rieng le */
+/* Bong bong xu ly hoat hinh noi len xuong */
 .iconBubble {
     width: 100px;
-    /* Increased size */
+    /* To len ty xem cho da */
     height: 100px;
     border-radius: 50%;
     background: #ffffff;
     border: 1px solid #e8eaed;
-    /* Softer border */
+    /* Vien mem mai hon xiu */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,16 +147,16 @@
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     color: #5f6368;
 
-    /* Connect float animation */
+    /* Ket noi voi animation noi len */
     animation: float 4s ease-in-out infinite;
-    /* Faster, smoother float */
+    /* Noi nhanh va muot hon */
 }
 
 .iconBubble:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     color: #ff8d96;
-    /* Active color */
+    /* Mau chu khi active */
     border-color: #ffffff;
     z-index: 10;
 }
@@ -170,16 +170,16 @@
 
     50% {
         transform: translateY(-15px);
-        /* Gentle float */
+        /* Noi nhe nhang thoi */
     }
 }
 
-/* Responsive */
+/* Ung dung di dong (Responsive) */
 @media (max-width: 768px) {
     .section {
         padding-top: 60px;
         padding-bottom: 60px;
-        /* Less padding on mobile */
+        /* Bot padding tren mobile cho do trong */
     }
 
     .splitLayout {
@@ -192,9 +192,9 @@
 
     .gifContainer {
         width: 180px;
-        /* Reduce size slightly */
+        /* Giam Size ti xiu */
         margin: 0 auto;
-        /* Center it */
+        /* Canh giua luon */
     }
 
     .titleWrapper {
@@ -203,41 +203,41 @@
 
     .title {
         font-size: 1.25rem;
-        /* Smaller for mobile */
+        /* Nho hon cho mobile */
         padding: 0 16px;
         text-align: center;
-        /* Center text on mobile if desired */
+        /* Canh giua text tren mobile luon */
     }
 
     .iconsContainer {
         overflow-x: auto;
         padding: 40px 20px;
-        /* Increase vertical padding to accommodate float animation */
+        /* Tang padding doc de animation khong bi cat */
         justify-content: flex-start;
         gap: 32px;
-        /* Increase gap for better spacing */
+        /* Tang khoang cach cho thoang */
         margin-left: 0;
         transform: none;
         min-width: unset;
         flex-wrap: nowrap;
-        /* Force horizontal scroll on mobile */
+        /* Bat buoc scroll ngang tren mobile */
         -webkit-overflow-scrolling: touch;
-        /* Smooth scroll on iOS */
+        /* Scroll muot tren iOS */
         min-height: 150px;
-        /* Ensure enough height */
+        /* Dam bao du chieu cao */
         align-items: center;
     }
 
-    /* Wrapper handles flex item behavior in the scrolling container */
+    /* Wrapper xu ly hanh vi tren container scroll */
     .iconWrapper {
         flex-shrink: 0;
         transform: none !important;
-        /* Reset static wave offset on mobile to align center */
+        /* Reset lai wave tren mobile de canh giua */
     }
 
     .iconBubble {
         width: 60px;
         height: 60px;
-        /* flex-shrink: 0; Moved to wrapper */
+        /* flex-shrink: 0; Da chuyen sang wrapper roi */
     }
 }

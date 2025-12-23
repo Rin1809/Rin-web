@@ -26,7 +26,7 @@ const Footer = () => {
                             <li><a href="https://open.spotify.com/user/31rc36tnihbyq66lcjkfbtm57frm?si=5d83dbdc9bb94045">Spotify</a></li>
                         </ul>
                     </div>
-                    {/* Optional 3rd column if needed, or stick to image which had 2-3ish visual groups */}
+                    {/* Cot thu 3 de danh, sau nay thich thi them, gio luoi roi */}
                 </div>
             </div>
 

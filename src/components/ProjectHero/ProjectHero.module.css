@@ -1,12 +1,12 @@
 .scrollTrack {
     width: 100%;
     height: 800vh;
-    /* Scroll distance for 4 shapes */
+    /* Scroll dai 8 lan man hinh, keo moi tay luon */
     position: relative;
     /* background-color: #ffffff; Removed for transparency integration */
 }
 
-/* The actual hero section that stays pinned */
+/* Phan hero dung im, chi co noi dung thay doi */
 .heroStickyContainer {
     position: sticky;
     top: 0;
@@ -57,7 +57,7 @@
     margin: 0 auto;
 }
 
-/* Scroll Down CTA */
+/* Nut cuon xuong (Call To Action) */
 .scrollDownWrapper {
     margin-top: 2rem;
     display: flex;

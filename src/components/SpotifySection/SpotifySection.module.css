@@ -38,9 +38,9 @@
     position: absolute;
     bottom: -1;
     left: -110px;
-    /* Moved further left to clear text */
+    /* Dich sang trai ti de ne chu */
     height: 59%;
-    /* Slightly larger for better presence */
+    /* To hon mot chut de khang dinh vi the */
     width: auto;
     object-fit: contain;
     z-index: 2;
@@ -48,18 +48,18 @@
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-/* Ensure container allows overflow if we want it sticking out */
-/* Or if we want it inside the white box but to the left of content?
-   The user drew the box TO THE LEFT of the player.
-   If strictly inside the flex layout:
+/* Dam bao cai hop no cho phep tran ra ngoai
+   Hoac la nhet vao trong nhung ben trai
+   User ve cai hop BEN TRAI cai player.
+   Neu nam gon trong flex:
 */
 
-/* Left Column */
+/* Cot trai (Left Column) */
 .embedContainer {
     flex: 1;
     min-width: 350px;
     position: relative;
-    /* Needed for overlay absolute positioning */
+    /* Can thiet de dinh vi overlay */
 }
 
 .overlay {
@@ -70,10 +70,10 @@
     height: 100%;
     z-index: 10;
     cursor: pointer;
-    /* Transparent by default, but captures clicks/scrolls */
+    /* Mac dinh la trong suot, nhung van bat click/scroll duoc */
 }
 
-/* Right Column */
+/* Cot phai (Right Column) */
 .infoContainer {
     flex: 1;
     display: flex;

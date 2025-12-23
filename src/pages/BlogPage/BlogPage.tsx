@@ -7,7 +7,7 @@ import { blogs } from '../../data/blogs';
 import WhatIsThis from '../../components/WhatIsThis/WhatIsThis';
 
 const BlogPage: React.FC = () => {
-    // Scroll to top on mount
+    // Scroll len dau trang khi vua vao (cho no lich su)
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -74,7 +74,7 @@ const BlogPage: React.FC = () => {
 
             <div className={styles.container}>
 
-                {/* Latest Blogs Section */}
+                {/* Phan Blog moi nhat (Tin hot trong ngay) */}
                 <div className={styles.latestSection}>
                     <h2 className={styles.sectionTitle}>Latest Blogs</h2>
 
@@ -123,7 +123,7 @@ const BlogPage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Additional content could go here */}
+                {/* Con gi nua thi nhet vao day, tam thoi het roi */}
             </div>
             <Footer />
         </div>

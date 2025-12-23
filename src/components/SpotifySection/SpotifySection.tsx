@@ -29,7 +29,7 @@ const SpotifySection: React.FC = () => {
     const [isInteractive, setIsInteractive] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Handle click outside to reset interactivity
+    // Xu ly click ra ngoai de tat tuong tac (cho do phien)
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -61,10 +61,10 @@ const SpotifySection: React.FC = () => {
                 </div>
 
                 <div className={styles.contentWrapper}>
-                    {/* Mascot Image */}
+                    {/* Hinh con meo tai quay cho no chill */}
                     <img src="/c71.png" alt="" className={styles.mascot} />
 
-                    {/* Left: Spotify Embed */}
+                    {/* Ben trai: Cai Spotify Embed (Nhac hay moi ngay) */}
                     <div
                         className={styles.embedContainer}
                         ref={containerRef}
@@ -85,11 +85,11 @@ const SpotifySection: React.FC = () => {
                             allowFullScreen
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                             loading="lazy"
-                            key={currentPlaylist.id} // Force re-render on change
+                            key={currentPlaylist.id} // Doi bai thi phai render lai chu
                         ></iframe>
                     </div>
 
-                    {/* Right: Info & Controls */}
+                    {/* Ben phai: Thong tin & Nut bam (Dieu khien ca the gioi) */}
                     <div className={styles.infoContainer}>
                         <div className={styles.infoContent}>
                             <h3 className={styles.playlistTitle}>{currentPlaylist.title}</h3>

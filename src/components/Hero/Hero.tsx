@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <div className={styles.rightColumn}>
-                    {/* Placeholder illustration for now */}
+                    {/* Hinh minh hoa tam thoi, co tien thue artist thi doi */}
                     <div className={styles.imageWrapper}>
                         <img src="/main.jpg" alt="Experience liftoff" className={styles.heroImage} />
                     </div>

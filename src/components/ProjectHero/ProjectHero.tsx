@@ -26,12 +26,12 @@ const ProjectHero: React.FC = () => {
         let height = canvas.height = canvas.offsetHeight;
         let animationFrameId: number;
 
-        // --- Configuration ---
-        const particleCount = 2000; // Increased for planet details
-        // Use Math.max to ensure it covers the width on landscape, and 0.6 for "full screen" feel
+        // --- Cau hinh ---
+        const particleCount = 2000; // Tang len ti cho hanh tinh no chi tiet
+        // Dung Math.max de dam bao no bao phu het man hinh, 0.6 la ti le vang (chem gio day)
         const baseRadius = Math.max(width, height) * 0.6;
 
-        // Helper to randomize point in sphere
+        // Ham random diem trong hinh cau (Hoc toan roi cung co luc dung)
         const randomSpherePoint = (radius: number) => {
             const u = Math.random();
             const v = Math.random();
@@ -46,28 +46,28 @@ const ProjectHero: React.FC = () => {
             };
         };
 
-        // --- Shape Generation ---
+        // --- Tao hinh khoi ---
 
-        // Shape 0: Galaxy Spiral (Ngân Hà)
+        // Shape 0: Ngan Ha (Spiral Galaxy) - Dep me hon
         const shape0: Point[] = [];
-        const galaxyArms = 3; // Fewer arms for clarity
-        const galaxyScale = baseRadius * 3.5; // HUGE scaling
+        const galaxyArms = 3; // 3 canh tay xoan oc la vua dep
+        const galaxyScale = baseRadius * 3.5; // Phong to het co
 
         for (let i = 0; i < particleCount; i++) {
-            // 1. Choose an arm
+            // 1. Chon canh tay de nhet hat vao
             const armIndex = i % galaxyArms;
 
-            // 2. Exponential distance for bright center
+            // 2. Cang vao gan tam cang sang (phan bo mu)
             const distFactor = Math.random();
-            // Tighter winding: 3 full turns (6PI)
+            // Xoan tit tho lo: 3 vong (6PI)
             const spiralAngle = distFactor * Math.PI * 6;
             const armBaseAngle = (armIndex / galaxyArms) * Math.PI * 2;
 
             const angle = armBaseAngle + spiralAngle;
             const r = distFactor * galaxyScale;
 
-            // 3. Scatter/Spread
-            // Spread increases with radius, but kept tight
+            // 3. Lam roi doi hinh (Scatter)
+            // Cang ra xa cang roi loan, doi ma
             const randomOffset = (Math.random() - 0.5) + (Math.random() - 0.5);
             const spread = randomOffset * (baseRadius * 0.15 + r * 0.15);
 
@@ -75,31 +75,31 @@ const ProjectHero: React.FC = () => {
             const z = Math.sin(angle) * r + Math.sin(angle + Math.PI / 2) * spread;
             const y = (Math.random() - 0.5) * (baseRadius * 0.1);
 
-            // Colors
+            // Mau sac (To mau cho cuoc song)
             let rCol = 0, gCol = 0, bCol = 0;
             if (distFactor < 0.1) {
-                rCol = 255; gCol = 240; bCol = 200; // Bright Center
+                rCol = 255; gCol = 240; bCol = 200; // Tam sang nhu mat troi chan ly
             } else {
                 const colorRand = Math.random();
                 if (colorRand > 0.5) {
-                    rCol = 100 + Math.random() * 100; // Purpleish
+                    rCol = 100 + Math.random() * 100; // Tim tim mong mo
                     gCol = 50;
                     bCol = 255;
                 } else {
                     rCol = 50;
                     gCol = 100 + Math.random() * 50;
-                    bCol = 255; // Blueish
+                    bCol = 255; // Xanh xanh hy vong
                 }
             }
 
             shape0.push({ x, y, z, r: rCol, g: gCol, b: bCol });
         }
 
-        // Shape 1: Detailed Solar System
+        // Shape 1: He Mat Troi (Solar System) - Chi tiet den tung hat bui
         const shape1: Point[] = [];
         const systemScale = baseRadius * 1.5;
 
-        // Helper to add a planet
+        // Ham them hanh tinh (God mode)
         const addPlanet = (
             count: number,
             orbitRadius: number,
@@ -107,24 +107,24 @@ const ProjectHero: React.FC = () => {
             colorFn: () => { r: number, g: number, b: number },
             hasRing: boolean = false
         ) => {
-            // Random angle for orbit position
+            // Goc quy dao random (cho no tu nhien)
             const orbitAngle = Math.random() * Math.PI * 2;
             const cx = Math.cos(orbitAngle) * orbitRadius;
-            const cz = Math.sin(orbitAngle) * orbitRadius; // Orbit on XZ plane roughly
+            const cz = Math.sin(orbitAngle) * orbitRadius; // Quy dao tren mat phang XZ la chu yeu
 
-            // Planet Body
+            // Than hanh tinh
             for (let i = 0; i < count; i++) {
                 const p = randomSpherePoint(planetRadius);
                 const col = colorFn();
                 shape1.push({
                     x: cx + p.x,
-                    y: p.y, // Flat plane
+                    y: p.y, // Det det thoi
                     z: cz + p.z,
                     ...col
                 });
             }
 
-            // Saturn Rings check
+            // Check xem co phai Sao Tho khong de ve cai vanh
             if (hasRing) {
                 const ringCount = 100;
                 for (let j = 0; j < ringCount; j++) {
@@ -139,7 +139,7 @@ const ProjectHero: React.FC = () => {
                 }
             }
 
-            // Orbital Path (Trail)
+            // Duong quy dao (vach ke duong)
             const orbitPoints = 40;
             for (let k = 0; k < orbitPoints; k++) {
                 const angle = (k / orbitPoints) * Math.PI * 2;
@@ -147,33 +147,33 @@ const ProjectHero: React.FC = () => {
                     x: Math.cos(angle) * orbitRadius,
                     y: 0,
                     z: Math.sin(angle) * orbitRadius,
-                    r: 50, g: 50, b: 50 // Faint grey orbit line
+                    r: 50, g: 50, b: 50 // Duong mo mo ao ao
                 });
             }
 
-            // Return center for moons etc
+            // Tra ve tam de con ve mat trang (neu co)
             return { x: cx, y: 0, z: cz };
         };
 
-        // 1. Sun (Center)
+        // 1. Mat troi (Big Boss)
         for (let i = 0; i < 400; i++) {
-            const p = randomSpherePoint(systemScale * 0.3); // Big Sun
+            const p = randomSpherePoint(systemScale * 0.3); // Mat troi to dung
             shape1.push({ ...p, r: 255, g: 100 + Math.random() * 100, b: 50 });
         }
 
-        // 2. Mercury
+        // 2. Sao Thuy
         addPlanet(30, systemScale * 0.3, systemScale * 0.03, () => ({ r: 150, g: 150, b: 150 }));
 
-        // 3. Venus
+        // 3. Sao Kim
         addPlanet(40, systemScale * 0.45, systemScale * 0.05, () => ({ r: 200, g: 180, b: 100 }));
 
-        // 4. Earth + Moon
+        // 4. Trai Dat + Mat Trang (Que huong)
         const earthPos = addPlanet(60, systemScale * 0.65, systemScale * 0.06, () => ({
             r: Math.random() > 0.5 ? 50 : 255,
             g: Math.random() > 0.5 ? 200 : 255,
             b: 255
         }));
-        // Moon
+        // Mat Trang (Chi Hang)
         for (let i = 0; i < 15; i++) {
             const p = randomSpherePoint(systemScale * 0.01);
             shape1.push({
@@ -184,34 +184,34 @@ const ProjectHero: React.FC = () => {
             });
         }
 
-        // 5. Mars
+        // 5. Sao Hoa (Elon Musk thich dieu nay)
         addPlanet(50, systemScale * 0.85, systemScale * 0.05, () => ({ r: 255, g: 100, b: 100 }));
 
-        // 6. Jupiter
+        // 6. Sao Moc
         addPlanet(150, systemScale * 1.3, systemScale * 0.15, () => ({ r: 200, g: 150, b: 100 }));
 
-        // 7. Saturn + Rings
+        // 7. Sao Tho + Vanh dai (Dac san)
         addPlanet(120, systemScale * 1.8, systemScale * 0.12, () => ({ r: 220, g: 200, b: 100 }), true);
 
-        // Fill remaining particle slots if any with random stars
+        // Con thua hat nao thi lam sao nen cho lap lanh
         while (shape1.length < particleCount) {
             const angle = Math.random() * Math.PI * 2;
             const dist = systemScale * 0.2 + Math.random() * systemScale * 1.5;
             shape1.push({
                 x: Math.cos(angle) * dist,
-                y: (Math.random() - 0.5) * 500, // Background stars
+                y: (Math.random() - 0.5) * 500, // Background star o xa xa
                 z: Math.sin(angle) * dist,
                 r: 255, g: 255, b: 255
             });
         }
 
-        // Shape 2: Earth & Moon
+        // Shape 2: Trai Dat & Mat Trang (Can canh)
         const shape2: Point[] = [];
         for (let i = 0; i < particleCount; i++) {
             if (i < 1000) {
-                // Earth Sphere (Ocean + Landish noise)
+                // Hinh cau Trai Dat (Co dai duong + Dat lien + ti nhieu)
                 const p = randomSpherePoint(baseRadius);
-                // Simple noise for land/sea color
+                // Noise don gian de phan biet dat lien voi bien
                 const noise = Math.sin(p.x * 0.02) + Math.cos(p.y * 0.02) + Math.sin(p.z * 0.02);
                 const isLand = noise > 0.5;
 
@@ -219,61 +219,59 @@ const ProjectHero: React.FC = () => {
                     ...p,
                     r: isLand ? 50 : 30,
                     g: isLand ? 150 : 100,
-                    b: isLand ? 50 : 255 // Green-ish vs Blue
+                    b: isLand ? 50 : 255 // Xanh la cay vs Xanh nuoc bien
                 });
             } else {
-                // Moon (Orbiting)
+                // Mat Trang (Dang quay xung quanh)
                 const p = randomSpherePoint(baseRadius * 0.25);
                 shape2.push({
-                    x: p.x + baseRadius * 1.6, // Offset to right
+                    x: p.x + baseRadius * 1.6, // Leeh phai ti
                     y: p.y,
                     z: p.z,
-                    r: 200, g: 200, b: 200 // Grey
+                    r: 200, g: 200, b: 200 // Mau xam xit
                 });
             }
         }
 
-        // Shape 3: Earth Core (Split View)
+        // Shape 3: Loi Trai Dat (Mo xe ra xem ben trong)
         const shape3: Point[] = [];
         for (let i = 0; i < particleCount; i++) {
             if (i < 300) {
-                // The Core (Inner dense sphere) -> Reuse "Sun" particles ideally, but mapping is direct index
-                // Indexes 0-300 were Sun in Shape1. Let's make them the Core here.
+                // Loi (Hat nhan) -> Lay lai may hat tu Mat Troi cung duoc
                 const p = randomSpherePoint(baseRadius * 0.5);
                 shape3.push({
                     ...p,
-                    r: 255, g: 50, b: 50 // Glowing Red Core
+                    r: 255, g: 50, b: 50 // Do ruc lua
                 });
             } else if (i < 1000) {
-                // Mantle/Crust (Split)
-                // We reuse Earth particles (Shape 2 indexes 300-1000 were part of Earth)
+                // Lop vo/Lop man (Tach doi ra)
                 const p = shape2[i]; // Copy Earth position relative to center
-                // Logic: Move Left hemisphere Left, Right hemisphere Right
-                const splitDist = baseRadius * 1.2; // Wider split
+                // Logic: Ban cau trai di sang trai, phai sang phai
+                const splitDist = baseRadius * 1.2; // Tach rong ra ti moi thay loi
                 const direction = p.x > 0 ? 1 : -1;
 
                 shape3.push({
                     x: p.x + direction * splitDist,
                     y: p.y,
                     z: p.z,
-                    r: 40, g: 30, b: 30 // Darker inner rock
+                    r: 40, g: 30, b: 30 // Da den si
                 });
             } else {
-                // Moon (Stays roughly same or moves away)
+                // Mat trang (Van o do hoac bay mau)
                 const p = shape2[i];
                 shape3.push({
-                    x: p.x + 100, // Drift away
+                    x: p.x + 100, // Bay mau luon
                     y: p.y - 100,
                     z: p.z,
-                    r: 100, g: 100, b: 100 // Fading moon
+                    r: 100, g: 100, b: 100 // Mo nhat dan chon ky niem
                 });
             }
         }
 
-        // --- Animation Loop ---
+        // --- Animation Loop (Vong lap vo tan) ---
 
         const render = (time: number) => {
-            // 1. Calculate Raw Scroll Progress
+            // 1. Tinh toan tien do scroll (Keo xuong den dau roi?)
             let rawProgress = 0;
             if (track) {
                 const rect = track.getBoundingClientRect();
@@ -285,10 +283,10 @@ const ProjectHero: React.FC = () => {
                 }
             }
 
-            // Clamp
+            // Kiem soat no trong khoang 0-1 de khoi loi
             rawProgress = Math.max(0, Math.min(1, rawProgress));
 
-            // 2. Define Phases with HOLD times (4 Phases)
+            // 2. Dinh nghia cac giai doan (4 giai doan cuoc doi)
             // 0.00 - 0.15: Galaxy
             // 0.15 - 0.35: -> Solar
             // 0.35 - 0.50: Solar
@@ -299,59 +297,55 @@ const ProjectHero: React.FC = () => {
 
             let sourceShape = shape0;
             let targetShape = shape0;
-            let mixFactor = 0; // 0 = source, 1 = target
+            let mixFactor = 0; // 0 = ban cu, 1 = ban moi
 
             if (rawProgress < 0.15) {
-                // Phase 0: Galaxy
+                // Giai doan 0: Ngan Ha
                 sourceShape = shape0;
                 targetShape = shape0;
                 mixFactor = 0;
             } else if (rawProgress < 0.35) {
-                // Morph Galaxy -> Solar
+                // Bien hinh: Ngan Ha -> He Mat Troi
                 sourceShape = shape0;
                 targetShape = shape1;
                 mixFactor = (rawProgress - 0.15) / 0.20;
             } else if (rawProgress < 0.50) {
-                // Phase 1: Solar
+                // Giai doan 1: He Mat Troi
                 sourceShape = shape1;
                 targetShape = shape1;
                 mixFactor = 0;
             } else if (rawProgress < 0.65) {
-                // Morph Solar -> Earth
+                // Bien hinh: He Mat Troi -> Trai Dat
                 sourceShape = shape1;
                 targetShape = shape2;
                 mixFactor = (rawProgress - 0.50) / 0.15;
             } else if (rawProgress < 0.75) {
-                // Phase 2: Earth
+                // Giai doan 2: Trai Dat
                 sourceShape = shape2;
                 targetShape = shape2;
                 mixFactor = 0;
             } else if (rawProgress < 0.90) {
-                // Morph Earth -> Core
+                // Bien hinh: Trai Dat -> Loi Trai Dat (Mo xe)
                 sourceShape = shape2;
                 targetShape = shape3;
                 mixFactor = (rawProgress - 0.75) / 0.15;
             } else {
-                // Phase 3: Core
+                // Giai doan 3: Loi Trai Dat
                 sourceShape = shape3;
                 targetShape = shape3;
                 mixFactor = 0;
             }
 
-            // Ease
+            // Lam muot chuyen dong (Ease in/out)
             const ease = (t: number) => t * t * (3 - 2 * t);
             const easedT = ease(mixFactor);
 
-            // Update particles
+            // Cap nhat vi tri hat
             const rotationSpeed = time * 0.0001;
 
             ctx.clearRect(0, 0, width, height);
 
-            // Background is white in CSS, no fillRect needed unless we want dark mode
-            // Assuming white background based on CSS.
-            // But particles are colored/light. Let's see. 
-            // If background is white, 'Starry white' (200,200,255) won't show well.
-            // Adjusting Solar System debris to be darker: 100, 100, 150
+            // Chinh lai mau sao cho toi toi ti
 
             const cx = width / 2;
             const cy = height / 2;
@@ -360,26 +354,26 @@ const ProjectHero: React.FC = () => {
                 const src = sourceShape[i];
                 const dst = targetShape[i];
 
-                // Lerp Position
+                // Noi suy vi tri (Lerp Position)
                 let px = src.x + (dst.x - src.x) * easedT;
                 let py = src.y + (dst.y - src.y) * easedT;
                 let pz = src.z + (dst.z - src.z) * easedT;
 
-                // Lerp Color
+                // Noi suy mau (Lerp Color)
                 const r = Math.round(src.r + (dst.r - src.r) * easedT);
                 const g = Math.round(src.g + (dst.g - src.g) * easedT);
                 const b = Math.round(src.b + (dst.b - src.b) * easedT);
 
-                // Rotate Camera/World
+                // Xoay Camera/The gioi
                 const cosR = Math.cos(rotationSpeed);
                 const sinR = Math.sin(rotationSpeed);
 
-                // 1. Y-axis rotation (Spin)
+                // 1. Xoay truc Y (Spin)
                 let xNew = px * cosR - pz * sinR;
                 let zNew = pz * cosR + px * sinR;
                 let yNew = py;
 
-                // 2. X-axis rotation (Tilt) - ~30 degrees
+                // 2. Xoay truc X (Tilt) - Khoang 30 do cho nghe thuat
                 const tilt = 0.5; // radians
                 const cosT = Math.cos(tilt);
                 const sinT = Math.sin(tilt);
@@ -391,10 +385,9 @@ const ProjectHero: React.FC = () => {
                 py = yTilted;
                 pz = zTilted;
 
-                // 3D Projection
+                // Chieu 3D
                 const fov = 2000;
-                // Dynamic camera offset to ensure large shapes don't clip (safely fully viewable)
-                // Max radius is approx 3.0 * baseRadius (debris). Let's use 4.0 * baseRadius + fov buffer.
+                // Camera tu dong thu phong de khong bi cat hinh (antoan la tren het)
                 const cameraZ = baseRadius * 4 + 2000;
 
                 const scale = fov / (fov + pz + cameraZ);
@@ -403,7 +396,7 @@ const ProjectHero: React.FC = () => {
                 const y2d = cy + py * scale;
                 const size = Math.max(1.5, 6 * scale);
 
-                // Draw
+                // Ve thoi
                 ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
                 ctx.beginPath();
                 ctx.arc(x2d, y2d, size, 0, Math.PI * 2);

@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header';
 import Hero from '../../components/Hero/Hero';
 import TechSwarm from '../../components/Background/TechSwarm';
 import VideoSection from '../../components/VideoSection/VideoSection';
+import IntroVideo from '../../components/IntroVideo/IntroVideo';
 import FloatingIconsSection from '../../components/FloatingIconsSection/FloatingIconsSection';
 import PjSection from '../../components/PjSection/PjSection';
 import BlogSection from '../../components/BlogSection/BlogSection';
@@ -12,6 +13,7 @@ import Footer from '../../components/Footer/Footer';
 function HomePage() {
     return (
         <>
+            <IntroVideo />
             <TechSwarm />
             <Header />
             <Hero />

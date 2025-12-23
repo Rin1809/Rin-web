@@ -1,34 +1,41 @@
 import styles from './PjSection.module.css';
 import { useEffect, useRef, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const projects = [
     {
         id: 1,
-        title: "Meow Coder",
-        description: "Chuyên gia code dạo, bug đâu fix đó (tùy tâm trạng). Sở trường: React, Node.js và Pate.",
-        image: "/cat_coder.png"
+        title: "About Me",
+        description: "I am Rin or Lyn (born 18/09/2006). Just a cat lover.",
+        image: "/1.jpg"
     },
     {
         id: 2,
-        title: "Server Guardian",
-        description: "Giám sát hệ thống 24/7 bằng phương pháp... ngủ trên server cho ấm. Đảm bảo uptime 99.9% (trừ giờ ăn).",
-        image: "/cat_server.png"
+        title: "Personal Hobbies",
+        description: "Reading novels and watching movies, drawing, singing, and shopping. Do you know am very love playing with cats?",
+        image: "/2.jpg"
     },
     {
         id: 3,
-        title: "Data Analyst",
-        description: "Phân tích dữ liệu hạt khô và cá ngừ. Thống kê chính xác lượng thức ăn cần nạp vào mỗi ngày.",
-        image: "/cat_data.png"
+        title: "Skills",
+        description: "We all have blind spots when it comes to our own character.",
+        image: "/3.jpg"
     },
     {
         id: 4,
-        title: "Cable Manager",
-        description: "Quản lý dây cáp mạng bằng cách... cào và cắn. Đảm bảo hệ thống mạng luôn 'gọn gàng' theo cách riêng.",
-        image: "/cat_coderr.png"
+        title: "Languages",
+        description: "Vietnamese Native, Japanese N2 certified, English self-assessed to be at least equivalent to my Japanese level. Using English for work - schools. Japanese for friends. :)",
+        image: "/4.jpg"
+    },
+    {
+        id: 5,
+        title: "Favorite Project",
+        description: "Cause i learning IT. So my fav project is building a SOAR (Security Orchestration, Automation and Response) prototype using AI with Splunk, Wazuh, Fortigate, and Sophos. The AI analyzes threats to automatically Block, Isolate, or Ignore, and alerts users via email.",
+        image: "/7.jpg"
     }
 ];
 
 const PjSection = () => {
+    const navigate = useNavigate();
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -56,7 +63,7 @@ const PjSection = () => {
     }, []);
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id="projects">
             <div className={styles.container}>
                 <div className={styles.textColumn}>
                     {projects.map((project, index) => (
@@ -69,7 +76,7 @@ const PjSection = () => {
                             <h2 className={styles.title}>{project.title}</h2>
                             <p className={styles.description}>{project.description}</p>
                             {index === projects.length - 1 && (
-                                <button className={styles.exploreButton}>
+                                <button className={styles.exploreButton} onClick={() => navigate('/project')}>
                                     Explore Me
                                 </button>
                             )}

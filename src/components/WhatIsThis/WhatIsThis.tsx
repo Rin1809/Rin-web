@@ -11,8 +11,8 @@ interface WhatIsThisProps {
 const WhatIsThis: React.FC<WhatIsThisProps> = ({
     defaultImage = "/c17.png",
     hoverImage = "/c16.png",
-    highlight = "FortiGate Firewall & Splunk Network Security Deployment",
-    description = "This repository documents the end-to-end deployment of a secure network infrastructure for a small business environment. It focuses on configuration and architecture rather than coding. Key features include"
+    highlight = "Featured Projects",
+    description = "Below is a collection of my most practical projects that have been implemented in real-world scenarios."
 }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 

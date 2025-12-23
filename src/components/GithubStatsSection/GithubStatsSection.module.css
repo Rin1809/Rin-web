@@ -17,6 +17,7 @@
     font-weight: 500;
     margin-bottom: 40px;
     background: linear-gradient(to right, #000000, #bb9af7);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: left;
@@ -124,5 +125,10 @@
     .cardGrid {
         grid-template-columns: 1fr;
         /* Stack on mobile */
+    }
+
+    .fullWidthCard {
+        grid-column: auto;
+        /* Reset span on mobile */
     }
 }

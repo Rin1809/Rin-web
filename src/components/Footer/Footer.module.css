@@ -60,34 +60,36 @@
     text-align: center;
     letter-spacing: -0.04em;
     margin-bottom: -40px;
-    /* Pull it down slightly to cut off if needed or fit snug */
     user-select: none;
     pointer-events: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* helper to align image and text */
+    align-items: baseline;
+    gap: 4vw;
+
+}
+
+.wordGroup {
+    display: flex;
+    align-items: baseline;
+}
+
+.textPart {
+    display: inline-block;
 }
 
 .brandImage {
-    height: 21vw;
-    /* Slightly smaller than font size to fit visual height */
+    height: 25vw;
+    /* Adjusted to match text height better */
     width: auto;
     object-fit: contain;
-    margin-right: 0vw;
-    /* Adjust spacing to connect with 'in' */
-    transform: translateY(1.5vw);
-    /* Fine tune vertical alignment */
+    margin-right: -0.5vw;
+    /* Pull text closer to image */
+    transform: translateY(4vw);
+    /* Fine tune alignment with baseline */
 }
 
-.brandImageL {
-    height: 21vw;
-    width: auto;
-    object-fit: contain;
-    margin: 0 1vw;
-    /* Added spacing to separate from '-' and 'y' */
-    transform: translateY(1.5vw);
-}
+/* Removed brandImageL and specialChar as they are no longer used/needed for the natural look */
 
 /* Special effect for specific characters */
 .specialChar {

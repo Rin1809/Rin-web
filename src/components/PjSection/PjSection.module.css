@@ -122,20 +122,71 @@
 }
 
 @media (max-width: 968px) {
+    .section {
+        margin-top: 80px;
+        padding: 60px 0;
+    }
+
     .container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
+        /* Image on top, Text below */
+        gap: 0;
+        padding: 0 20px;
+    }
+
+    .imageColumn {
+        width: 100%;
+        height: 45vh;
+        /* Fixed height for image area */
+        position: sticky;
+        top: 60px;
+        /* Just below header */
+        z-index: 5;
+        background: white;
+        /* Prevent text see-through if needed */
+        margin-bottom: 20px;
+        flex-shrink: 0;
     }
 
     .stickyWrapper {
         position: relative;
         top: 0;
         transform: none;
-        margin-bottom: 40px;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        /* Reset aspect ratio constraint */
+    }
+
+    .ideImage {
+        border-radius: 0 0 12px 12px;
+    }
+
+    .textColumn {
+        width: 100%;
+        gap: 0;
     }
 
     .textBlock {
-        min-height: auto;
+        min-height: 60vh;
+        /* Ensure enough scroll distance */
         padding: 40px 0;
+        justify-content: flex-start;
+        /* Align text to top of its block */
+        opacity: 0.3;
+    }
+
+    .textBlock.active {
+        opacity: 1;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
     }
 }
 

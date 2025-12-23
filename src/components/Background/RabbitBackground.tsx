@@ -4,7 +4,7 @@ const RabbitBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     // Config
-    const PARTICLE_COUNT = 2000;
+
     const MOUSE_REPULSION_RADIUS = 100;
     const MOUSE_PUSH_FORCE = 15;
 
@@ -182,7 +182,7 @@ const RabbitBackground = () => {
         const render = (time: number) => {
             ctx.clearRect(0, 0, width, height);
 
-            const rotationSpeed = time * 0.0005;
+
             const cx = width / 2;
             const cy = height / 2;
 

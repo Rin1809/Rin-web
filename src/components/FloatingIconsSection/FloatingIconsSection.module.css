@@ -177,7 +177,8 @@
 /* Responsive */
 @media (max-width: 768px) {
     .section {
-        padding-top: 100px;
+        padding-top: 60px;
+        padding-bottom: 60px;
         /* Less padding on mobile */
     }
 
@@ -188,8 +189,12 @@
         text-align: center;
     }
 
+
     .gifContainer {
-        width: 200px;
+        width: 180px;
+        /* Reduce size slightly */
+        margin: 0 auto;
+        /* Center it */
     }
 
     .titleWrapper {
@@ -197,33 +202,42 @@
     }
 
     .title {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
         /* Smaller for mobile */
-        padding: 0 20px;
+        padding: 0 16px;
         text-align: center;
         /* Center text on mobile if desired */
     }
 
     .iconsContainer {
         overflow-x: auto;
-        padding: 20px;
+        padding: 40px 20px;
+        /* Increase vertical padding to accommodate float animation */
         justify-content: flex-start;
-        gap: 24px;
+        gap: 32px;
+        /* Increase gap for better spacing */
         margin-left: 0;
         transform: none;
         min-width: unset;
         flex-wrap: nowrap;
         /* Force horizontal scroll on mobile */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll on iOS */
+        min-height: 150px;
+        /* Ensure enough height */
+        align-items: center;
     }
 
     /* Wrapper handles flex item behavior in the scrolling container */
     .iconWrapper {
         flex-shrink: 0;
+        transform: none !important;
+        /* Reset static wave offset on mobile to align center */
     }
 
     .iconBubble {
-        width: 56px;
-        height: 56px;
+        width: 60px;
+        height: 60px;
         /* flex-shrink: 0; Moved to wrapper */
     }
 }

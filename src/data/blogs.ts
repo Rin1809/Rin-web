@@ -29,7 +29,7 @@ export const blogs = [
         title: "Security System With Pfsense",
         date: "Dec 13, 2025",
         category: "Cybersecurity - Network",
-        image: "/cat-blog-3.png",
+        image: "/pfsense.png",
         imageCaption: "Pfsense Firewall",
         description: "A comprehensive guide to designing a secure small business network using Pfsense Firewall. Covers network segmentation (LAN/DMZ), NAT, Web Access Restriction, User Group Management, Policy, etc.",
         link: "#",
@@ -38,14 +38,15 @@ export const blogs = [
     },
     {
         id: 4,
-        title: "10 Purr-fect Toys for Active Cats",
-        date: "Dec 12, 2025",
-        category: "Review",
-        image: "/cat-blog-4.png",
-        imageCaption: "Playtime!",
-        description: "Keep your energetic cat entertained for hours with these top-rated toys. We review everything from laser pointers to interactive puzzles.",
+        title: "Digital Forensics",
+        date: "Dec 13, 2025",
+        category: "Cybersecurity - Network",
+        image: "/digitalforensics.png",
+        imageCaption: "Digital Forensics",
+        description: "A comprehensive documentation of realistic digital forensics lab simulations, covering disk imaging, memory analysis, file system timelines, and log investigation using industry-standard tools like Volatility, The Sleuth Kit, and Splunk.",
         link: "#",
-        contentPath: "/posts/blog-1.md",
+        contentPath: "/posts/blog-4.md",
         videoUrl: "https://www.youtube-nocookie.com/embed/TLvMXOEXi_k"
     }
+
 ];

@@ -4,23 +4,23 @@ import styles from './SpotifySection.module.css';
 const PLAYLISTS = [
     {
         id: '2uZFS0NuNYPSR0neKprFwU',
-        title: 'Lofi Chill',
-        description: 'Những giai điệu nhẹ nhàng giúp tập trung làm việc và học tập. Một chút bình yên giữa bộn bề cuộc sống.',
+        title: 'V-Pop Favorites',
+        description: 'Songs from 2022 and earlier. The nostalgic and gentle melodies help focus on work and study. A little peace amidst the chaos of life.',
     },
     {
         id: '0NtIFyq7ZFQtDvKDcDycHS',
-        title: 'Programming Focus',
-        description: 'Nhạc không lời, beat mạnh mẽ để giữ vững flow code. Tăng sự tập trung tối đa.',
+        title: 'Top Melancholic J-Pop',
+        description: 'Deep and sorrowful. Sad if you understand the lyrics, and even if you don\'t, the vibe is still sad :(',
     },
     {
         id: '6MlXr1lH5XtSVn7SECc68E',
-        title: 'Late Night Vibes',
-        description: 'Dành cho những đêm thức trắng chạy deadline. Hơi buồn một chút, nhưng rất thấm.',
+        title: 'J-Pop Hits',
+        description: 'Very J-Pop. And very J-Pop.',
     },
     {
         id: '2PynP8hcLDnj7JbLgixwbt',
-        title: 'Gaming Music',
-        description: 'Năng lượng bùng nổ cho những trận game căng thẳng hoặc khi cần boost tinh thần.',
+        title: 'Long Cao',
+        description: 'As the name suggests. Long Cao only :)',
     },
 ];
 

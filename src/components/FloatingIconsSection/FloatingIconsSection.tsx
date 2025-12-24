@@ -33,7 +33,7 @@ const icons = [
 ];
 
 const FloatingIconsSection = () => {
-    const fullText = "Welcome to my world !!\n\nAs an IT: \n| Networking | Security | System |\n\nI hope i can learn more and more from you...";
+    const fullText = "Welcome to my world !!\n\n 18さいです!\n\nNow its 2025 but still 18 years old... :D";
     const [displayedText, setDisplayedText] = useState("");
     const [hasStarted, setHasStarted] = useState(false);
     const [isHovered, setIsHovered] = useState(false);

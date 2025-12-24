@@ -8,6 +8,8 @@ import ProjectPage from './pages/ProjectPage/ProjectPage';
 import ProjectDocsPage from './pages/ProjectDocsPage/ProjectDocsPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+
 function App() {
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
@@ -39,6 +41,7 @@ function App() {
 
   return (
     <Router>
+      <LoadingScreen />
       <ScrollToTop lenis={lenis} />
       <div className="app">
         <Routes>

@@ -26,6 +26,8 @@ const IntroVideo = React.forwardRef<HTMLElement>((_, ref) => {
                     loop
                     muted
                     playsInline
+                    preload="auto"
+                    poster="/hj.webp"
                 >
                     <source src="/ioo.mp4" type="video/mp4" />
                     Your browser does not support the video tag.

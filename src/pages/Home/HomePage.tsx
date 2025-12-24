@@ -10,7 +10,7 @@ import SpotifySection from '../../components/SpotifySection/SpotifySection';
 
 import Footer from '../../components/Footer/Footer';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 function HomePage() {
     const introRef = useRef<HTMLElement>(null);

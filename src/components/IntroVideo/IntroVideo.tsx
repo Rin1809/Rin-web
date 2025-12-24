@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './IntroVideo.module.css';
 
-const IntroVideo = React.forwardRef<HTMLElement>((props, ref) => {
+const IntroVideo = React.forwardRef<HTMLElement>((_, ref) => {
     const contentRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {

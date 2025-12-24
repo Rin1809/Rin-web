@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './Header.module.css';
 import { Link, useLocation } from 'react-router-dom';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    isHidden?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isHidden = false }) => {
     const location = useLocation();
     const isHome = location.pathname === '/';
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -14,7 +18,7 @@ const Header: React.FC = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} ${isHidden ? styles.hidden : styles.visible}`}>
             <div className={styles.container}>
                 <div className={styles.left}>
                     <Link to="/" className={styles.logo}>

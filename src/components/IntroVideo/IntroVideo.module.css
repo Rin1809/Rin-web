@@ -1,19 +1,29 @@
 .videoContainer {
     width: 100%;
-    height: 100vh;
+    height: 102vh;
     overflow: hidden;
     position: relative;
     z-index: 50;
     /* Ensure it stays on top of other initial elements if needed */
     background-color: #000;
     /* Fallback */
+    margin-bottom: 250px;
 }
 
 .video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 35%;
+    /* Shift video content up slightly */
     display: block;
+}
+
+.parallaxContent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    will-change: transform;
 }
 
 .overlay {

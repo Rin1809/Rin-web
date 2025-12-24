@@ -28,8 +28,11 @@ const IntroVideo = React.forwardRef<HTMLElement>((_, ref) => {
                     playsInline
                     preload="auto"
                     poster="/hj.webp"
+                    onCanPlayThrough={() => {
+                        window.dispatchEvent(new Event('video-ready'));
+                    }}
                 >
-                    <source src="/ioo.mp4" type="video/mp4" />
+                    <source src="/ioo.webm" type="video/webm" />
                     Your browser does not support the video tag.
                 </video>
             </div>

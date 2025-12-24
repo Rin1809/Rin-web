@@ -1,0 +1,188 @@
+.page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #202124;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer {
+    flex: 1;
+    padding-bottom: 60px;
+}
+
+
+/* Title Section Removed - Replaced by SourceHero */
+
+/* Breadcrumb / Toolbar */
+.toolbar {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #5f6368;
+}
+
+.crumb {
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.crumb:hover {
+    color: #202124;
+    background-color: #f1f3f4;
+    text-decoration: none;
+}
+
+.crumbActive {
+    color: #202124;
+    font-weight: 600;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    padding-bottom: 4rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+}
+
+.item {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+}
+
+.item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #dadce0;
+}
+
+.folderIcon {
+    color: #fbc02d;
+    /* Google Drive Folder Color vibe */
+    width: 56px;
+    height: 56px;
+}
+
+.fileIcon {
+    color: #1a73e8;
+    /* Blue file icon */
+    width: 56px;
+    height: 56px;
+}
+
+.itemName {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #202124;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.itemMeta {
+    font-size: 0.8rem;
+    color: #5f6368;
+    margin-top: auto;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 3rem;
+    color: #5f6368;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #e0e0e0;
+}
+
+/* Source Section Header (Copied from ProjectPage) */
+.projectsSection {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.sectionTitle {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+    font-size: 14px;
+    color: #5f6368;
+    cursor: pointer;
+    padding-bottom: 16px;
+    position: relative;
+    font-weight: 500;
+}
+
+.activeTab {
+    color: #202124;
+}
+
+.activeTab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #202124;
+}
+
+@media (max-width: 768px) {
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+}

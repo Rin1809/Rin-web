@@ -8,6 +8,7 @@ import ProjectPage from './pages/ProjectPage/ProjectPage';
 import ProjectDocsPage from './pages/ProjectDocsPage/ProjectDocsPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
+import SourcePage from './pages/SourcePage/SourcePage';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/project" element={<ProjectPage />} />
           <Route path="/project/docs/:id" element={<ProjectDocsPage />} />
+          <Route path="/source" element={<SourcePage />} />
         </Routes>
       </div>
     </Router>

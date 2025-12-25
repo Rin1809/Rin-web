@@ -22,7 +22,7 @@ export const sourceData: SourceItem[] = [
         parentId: 'adobe',
         size: '1 MB',
         updatedAt: '23-12-2025',
-        link: 'https://source.rins.space/Adobe/Quan%20Trong%20!!%20Firewall%20App%20Blocker%201.9.zip'
+        link: 'https://source.rins.space/Adobe/Firewall%20App%20Blocker%201.9.zip'
     },
     {
         id: 'pts1',
@@ -96,7 +96,7 @@ export const sourceData: SourceItem[] = [
         parentId: 'iso',
         size: '5.26 GB',
         updatedAt: '2025-12-24',
-        link: 'https://source.rins.space/ISO/17763.3650.221105-1748.rs5_release.iso'
+        link: 'https://source.rins.space/ISO/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso'
     },
     {
         id: 'almalinux-9',

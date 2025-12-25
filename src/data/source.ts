@@ -12,7 +12,7 @@ export const sourceData: SourceItem[] = [
     // --- ROOT FOLDERS ---
     { id: 'adobe', name: 'Adobe Cracked Collection', type: 'folder', parentId: null, size: '25.8 GB', updatedAt: '2025-12-24' },
     { id: 'iso', name: 'OS Images (ISO)', type: 'folder', parentId: null, size: '42.21 GB', updatedAt: '2025-9-1' },
-    { id: 'soft', name: 'Software & Tools', type: 'folder', parentId: null, size: '36.9 KB', updatedAt: '2025-11-22' },
+    { id: 'windowsactivate', name: 'Windows Activate', type: 'folder', parentId: null, size: '36.9 KB', updatedAt: '2025-11-22' },
 
     // --- ADOBE ---
     {
@@ -239,65 +239,63 @@ export const sourceData: SourceItem[] = [
         id: 'active-win-all',
         name: 'Active windows (All).bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '9 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows (All).bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%20(All).bat'
     },
     {
         id: 'active-win-7',
         name: 'Active windows 7.bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '2 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows 7.bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%207.bat'
     },
     {
         id: 'active-win-8',
         name: 'Active windows 8.bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '4 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows 8.bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%208.bat'
     },
     {
         id: 'active-win-10',
         name: 'Active windows 10.bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '3 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows 10.bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%2010.bat'
     },
     {
         id: 'active-win-11',
         name: 'Active windows 11.bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '4 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows 11.bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%2011.bat'
     },
     {
         id: 'active-win-xp',
         name: 'Active windows XP.bat',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '1 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/Active windows XP.bat'
+        link: 'https://source.rins.space/Windows%20Active/Active%20windows%20XP.bat'
     },
     {
         id: 'readme',
         name: 'README.md',
         type: 'file',
-        parentId: 'soft',
+        parentId: 'windowsactivate',
         size: '18 KB',
         updatedAt: '2025-5-23',
-        link: 'https://source.rins.space/SOFT/README.md'
+        link: 'https://source.rins.space/Windows%20Active/README.md'
     }
-
-
 ];

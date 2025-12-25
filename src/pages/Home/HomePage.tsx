@@ -6,6 +6,7 @@ import IntroVideo from '../../components/IntroVideo/IntroVideo';
 import FloatingIconsSection from '../../components/FloatingIconsSection/FloatingIconsSection';
 import PjSection from '../../components/PjSection/PjSection';
 import BlogSection from '../../components/BlogSection/BlogSection';
+import GalleryScroll from '../../components/GalleryScroll/GalleryScroll';
 import SpotifySection from '../../components/SpotifySection/SpotifySection';
 
 import Footer from '../../components/Footer/Footer';
@@ -26,6 +27,7 @@ function HomePage() {
             <PjSection />
             <SpotifySection />
             <BlogSection />
+            <GalleryScroll />
 
             <Footer />
         </>

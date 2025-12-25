@@ -239,8 +239,8 @@ const SourceHero: React.FC = () => {
         <section className={styles.heroSection}>
             <canvas ref={canvasRef} className={styles.canvas} />
             <div className={styles.contentWrapper}>
-                <h1 className={styles.title}>Source Cloud</h1>
-                <p className={styles.subtitle}>This Cloud is running on my Proxmox VE (PVE), so dont worry, its clean :D</p>
+                <h1 className={styles.title}>Rins Cloud</h1>
+                <p className={styles.subtitle}>This Cloud is running on my Physical Server with Proxmox VE (PVE), so dont worry, its clean :D</p>
 
                 <button
                     className={styles.goButton}

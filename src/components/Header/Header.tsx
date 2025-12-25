@@ -32,6 +32,7 @@ const Header: React.FC<HeaderProps> = ({ isHidden = false }) => {
                     <nav className={styles.nav}>
                         <Link to="/project" className={styles.navLink}>Project</Link>
                         <Link to="/blog" className={styles.navLink}>Blog</Link>
+                        <Link to="/source" className={styles.navLink}>Source</Link>
                         <a href={getLink('#footer')} className={styles.navLink}>Info</a>
                     </nav>
                 </div>
@@ -73,6 +74,7 @@ const Header: React.FC<HeaderProps> = ({ isHidden = false }) => {
                 <div className={styles.mobileMenu}>
                     <Link to="/project" className={styles.mobileNavLink} onClick={toggleMenu}>Project</Link>
                     <Link to="/blog" className={styles.mobileNavLink} onClick={toggleMenu}>Blog</Link>
+                    <Link to="/source" className={styles.mobileNavLink} onClick={toggleMenu}>Source</Link>
                     <a href={getLink('#footer')} className={styles.mobileNavLink} onClick={toggleMenu}>Info</a>
                     <a
                         href="https://quybaotrotreemvietnam.org.vn"

@@ -54,7 +54,7 @@ const SourcePage: React.FC = () => {
 
             <WhatIsThis
                 highlight="Digital Archive & Tools"
-                description="A centralized cloud for my essential ISOs, software installers, and development assets. Sorted and ready for deployment."
+                description="A centralized cloud for my essential software installers, and development assets. Sorted and ready for deployment."
                 defaultImage="/c11.png"
                 hoverImage="/c12.png"
             />

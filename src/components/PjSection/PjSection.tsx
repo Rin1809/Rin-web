@@ -5,7 +5,7 @@ const projects = [
     {
         id: 1,
         title: "About Me",
-        description: "I am Rin or Lyn (born 18/09/2006). Just a cat lover.",
+        description: "I am Rin or Lyn (born 18/09/2006). Am now is Integration Engineer at ETC | Lead Developer at Yurineko.",
         image: "/1.jpg"
     },
     {

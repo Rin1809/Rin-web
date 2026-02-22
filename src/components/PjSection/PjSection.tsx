@@ -23,8 +23,8 @@ const projects = [
     {
         id: 4,
         title: "Languages I Can Speak",
-        description: "Vietnamese Native, Japanese, English self-assessed to be at least equivalent to my Japanese level. Using English for work - schools. Japanese for friends. :)",
-        image: "/4.jpg"
+        description: "Vietnamese Native, Japanese (N2), English self-assessed to be at least equivalent to my Japanese level. Using English for work - schools. Japanese for friends. :)",
+        image: "/jp.jpg"
     },
     {
         id: 5,

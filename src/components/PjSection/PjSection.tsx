@@ -6,7 +6,7 @@ const projects = [
         id: 1,
         title: "About Me",
         description: "I am Rin or Lyn (born 18/09/2006). Am now is Integration Engineer at ETC | Lead Developer of Yurineko.",
-        image: "/1.jpg"
+        image: "/11.png"
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const projects = [
         id: 3,
         title: "Skills I Can Do",
         description: "We all have blind spots when it comes to our own character.",
-        image: "/3.jpg"
+        image: "/12.jpg"
     },
     {
         id: 4,
@@ -28,9 +28,9 @@ const projects = [
     },
     {
         id: 5,
-        title: "Favorite Project",
-        description: "Cause i learning IT. So my fav project is building a SOAR (Security Orchestration, Automation and Response) prototype using AI with Splunk, Wazuh, Fortigate, and Sophos. The AI analyzes threats to automatically Block, Isolate, or Ignore, and alerts users via email.",
-        image: "/7.jpg"
+        title: "!!!!",
+        description: "Only read inbox from DMs discord !!!",
+        image: "/13.jpg"
     }
 ];
 
